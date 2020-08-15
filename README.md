@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Givven_React_App
+블록체인 기부 플랫폼
 
-## Available Scripts
+## 협업 규칙 
+#### Task
+asana task 와 PR을 1:1 대응시키기 
+****
 
-In the project directory, you can run:
+#### branch
+    feat/<issue#>-branchName
+    fix/<issue#>-branchName
+****
 
-### `yarn start`
+#### Commit
+* 작업 단위로 `commit` 하기 ( 너무 작은 작업들은 `squash` )
+* 생각없이 `git add . ` 하지말고 커밋내용에 알맞는 작업만 추가하기
+<br/>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### message
+    // 기능 추가 등의 커밋  
+    feat: message
+    // 수정 사항 
+    fix: message
+    // 삭제
+    remove: message
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+****
+#### Pull Request
+1. master를 `pull` 하여 업데이트
+2. `merge` 할 브랜치를 master 에 `rebase` 
+    - confilct 를 미리 해결하고 로그를 깔끔하게 유지 하기 위함
+3. PR 이름은 **asana** task 이름과 같게
+4. 변경 사항 / 특이사항/ asana task link 를 Description에 작성
+5. Reviewer 설정 / asana에서 mention 하여  리뷰요청
 
-### `yarn test`
+* 전원 리뷰 완료시 `merge`
+* 이해가 안되는 코드는 변경사항을 보고 플젝에 어떤 영향을 미칠지 생각하여 리뷰 남기기
+* 도움 요청은 Draft PR 로 올리기
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+****
