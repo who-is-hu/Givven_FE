@@ -1,0 +1,36 @@
+{
+  "extends": ["react-app", "airbnb", "prettier"],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 0,
+    "no-alert": 0,
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["children"]
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/index.stories.jsx"]
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
