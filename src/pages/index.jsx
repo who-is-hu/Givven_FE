@@ -3,8 +3,8 @@ import MyPage from './MyPage';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import MarketPage from './MarketPage';
-import MarketDetail from './MarketDetail';
-import CampaignPage from './CampaignPage';
+import ItemDetail from './ItemDetail';
+import CampaignListPage from './CampaignListPage';
 import CampaignDetail from './CampaignDetail';
 
 export {
@@ -13,7 +13,7 @@ export {
   SignInPage,
   SignUpPage,
   MarketPage,
-  MarketDetail,
-  CampaignPage,
+  ItemDetail,
+  CampaignListPage,
   CampaignDetail,
 };

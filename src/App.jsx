@@ -7,8 +7,8 @@ import {
   SignInPage,
   SignUpPage,
   MarketPage,
-  MarketDetail,
-  CampaignPage,
+  ItemDetail,
+  CampaignListPage,
   CampaignDetail,
 } from './pages';
 
@@ -20,8 +20,8 @@ function App() {
       <Route path="/signIn" component={SignInPage} />
       <Route path="/signUp" component={SignUpPage} />
       <Route path="/market" exact component={MarketPage} />
-      <Route path="/market/:id" component={MarketDetail} />
-      <Route path="/campaign" exact component={CampaignPage} />
+      <Route path="/market/:id" component={ItemDetail} />
+      <Route path="/campaign" exact component={CampaignListPage} />
       <Route path="/campaign/:id" component={CampaignDetail} />
     </BrowserRouter>
   );
