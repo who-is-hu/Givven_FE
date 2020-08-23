@@ -1,6 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { reset } from 'styled-reset';
+import reset from 'styled-reset';
 
 import Router from './Router';
 

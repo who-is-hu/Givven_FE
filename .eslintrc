@@ -13,6 +13,12 @@
       {
         "ignore": ["children"]
       }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/index.stories.jsx"]
+      }
     ]
   },
   "env": {

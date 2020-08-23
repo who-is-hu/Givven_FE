@@ -10,7 +10,7 @@ import {
   ItemDetail,
   CampaignListPage,
   CampaignDetail,
-} from 'components/pages';
+} from './pages';
 
 function Router() {
   return (
