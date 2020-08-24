@@ -1,7 +1,7 @@
 import React from 'react';
 
-function RegisterCanpaign () {
+function RegisterCamgaignPage () {
     return <span>캠페인등록 페이지</span>
 }
 
-export default RegisterCanpaign;
+export default RegisterCamgaignPage;
