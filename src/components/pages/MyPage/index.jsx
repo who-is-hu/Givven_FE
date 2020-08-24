@@ -2,8 +2,8 @@ import React from 'react';
 import { useParams, useHistory } from 'react-router';
 
 import NormalMyPage from './NormalMyPage';
-import CharityMyPage from './CharityMyPage';
-import SellerMyPage from './SellerMyPage';
+import CharityDashboard from './CharityDashboard';
+import SellerDashboard from './SellerDashboard';
 
 function MyPage({ props }) {
   const { auth } = useParams();
@@ -14,9 +14,9 @@ function MyPage({ props }) {
     case 'normal':
       return <NormalMyPage />;
     case 'charity':
-      return <CharityMyPage />;
+      return <CharityDashboard />;
     case 'seller':
-      return <SellerMyPage />;
+      return <SellerDashboard />;
     default:
       history.goBack();
   }

@@ -3,9 +3,16 @@ import MyPage from './MyPage';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import MarketPage from './MarketPage';
-import ItemDetail from './ItemDetail';
-import CampaignListPage from './CampaignListPage';
-import CampaignDetail from './CampaignDetail';
+import ItemDetailPage from './ItemDetailPage';
+import MainPage from './MainPage';
+import CampaignDetailPage from './CampaignDetailPage';
+import InquiryTransactionPage from './InquiryTransactionPage';
+import DonatePage from './DonatePage';
+import PurchasePage from './PurchasePage';
+import RegisterItemPage from './RegisterItemPage';
+import RegisterCamgaignPage from './RegisterCamgaignPage';
+import PurchaseListPage from './PurchaseListPage';
+import OrderPage from './OrderPage';
 
 export {
   HomePage,
@@ -13,7 +20,14 @@ export {
   SignInPage,
   SignUpPage,
   MarketPage,
-  ItemDetail,
-  CampaignListPage,
-  CampaignDetail,
+  ItemDetailPage,
+  MainPage,
+  CampaignDetailPage,
+  InquiryTransactionPage,
+  DonatePage,
+  PurchasePage,
+  RegisterItemPage,
+  RegisterCamgaignPage,
+  PurchaseListPage,
+  OrderPage,
 };
