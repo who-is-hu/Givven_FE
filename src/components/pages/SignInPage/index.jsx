@@ -19,14 +19,10 @@ const SignInPage = () => {
     console.log(data);
 
     axios
-      .post(
-        'http://ec2-54-180-160-14.ap-northeast-2.compute.amazonaws.com:8080/auth/login',
-        {
-          email: data.email,
-          password: data.password,
-        },
-        { withCredentials: true },
-      )
+      .post('/auth/login', {
+        email: data.email,
+        password: data.password,
+      })
       .then(rsp => {
         console.log(rsp);
       })
@@ -37,10 +33,7 @@ const SignInPage = () => {
 
   const onLogout = () => {
     axios
-      .get(
-        'http://ec2-54-180-160-14.ap-northeast-2.compute.amazonaws.com:8080/auth/logout',
-        { withCredentials: true },
-      )
+      .get('auth/logout')
       .then(rsp => {
         console.log(rsp);
       })
