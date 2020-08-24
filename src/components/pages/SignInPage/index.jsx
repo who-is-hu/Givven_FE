@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import Layout from 'components/layout';
@@ -14,21 +15,23 @@ const StyledFrom = styled.form`
 
 const SignInPage = () => {
   const { register, handleSubmit } = useForm();
-  console.log();
-  const onSubmit = data => {
+  const dispatch = useDispatch();
+  const onSubmit = async data => {
     console.log(data);
-
-    axios
+    dispatch({ type: 'SET_LOADING', loading: true });
+    await axios
       .post('/auth/login', {
         email: data.email,
         password: data.password,
       })
       .then(rsp => {
         console.log(rsp);
+        dispatch({ type: 'SET_USER', user: rsp.data.user });
       })
       .catch(e => {
-        console.error(e);
+        alert(e.response.data.message);
       });
+    dispatch({ type: 'SET_LOADING', loading: false });
   };
 
   const onLogout = () => {
