@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router';
 import NormalMyPage from './NormalMyPage';
 
 function MyPage({ props }) {
+  console.log(useParams());
   const { auth } = useParams();
   const history = useHistory();
 
