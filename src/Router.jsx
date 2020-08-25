@@ -28,7 +28,7 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <CheckAuthority path="/myPage/:auth" exact component={MyPage} userType={["normal"]} />
+        <CheckAuthority path="/myPage" exact component={MyPage} userType={["normal"]} />
         <CheckAuthority path="/dashboard/:userType" exact component={DashBoard} userType={["seller", "charity"]}/>
         <Route path="/signIn" exact component={SignInPage} />
         <Route path="/signUp" exact component={SignUpPage} />

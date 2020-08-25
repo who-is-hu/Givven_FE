@@ -1,7 +1,10 @@
 import React from 'react';
+import Layout from 'components/layout';
 
 function MarketPage() {
-  return <div>상점</div>;
+  return <Layout>
+    <div>상점</div>
+    </Layout>;
 }
 
 export default MarketPage;

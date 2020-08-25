@@ -1,20 +1,10 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router';
+import Layout from 'components/layout';
 
-import NormalMyPage from './NormalMyPage';
-
-function MyPage({ props }) {
-  console.log(useParams());
-  const { auth } = useParams();
-  const history = useHistory();
-
-  console.log(props);
-  switch (auth) {
-    case 'normal':
-      return <NormalMyPage />;
-    default:
-      history.goBack();
-  }
+function NormalMyPage() {
+  return <Layout>
+    <div>일반회원 마이페이지</div>
+  </Layout>;
 }
 
-export default MyPage;
+export default NormalMyPage;
