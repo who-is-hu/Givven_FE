@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useHistory } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -16,6 +16,7 @@ const StyledFrom = styled.form`
 const SignInPage = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const history = useHistory();
   const onSubmit = async data => {
     console.log(data);
     dispatch({ type: 'SET_LOADING', loading: true });
@@ -25,23 +26,13 @@ const SignInPage = () => {
         password: data.password,
       })
       .then(rsp => {
-        console.log(rsp);
+        // console.log(rsp);
         dispatch({ type: 'SET_USER', user: rsp.data.user });
+        history.push('/main');
+        dispatch({ type: 'SET_LOADING', loading: false });
       })
       .catch(e => {
         alert(e.response.data.message);
-      });
-    dispatch({ type: 'SET_LOADING', loading: false });
-  };
-
-  const onLogout = () => {
-    axios
-      .get('auth/logout')
-      .then(rsp => {
-        console.log(rsp);
-      })
-      .catch(e => {
-        console.error(e);
       });
   };
 
@@ -63,9 +54,6 @@ const SignInPage = () => {
         />
         <button type="submit">submit</button>
       </StyledFrom>
-      <button type="button" onClick={() => onLogout()}>
-        ho
-      </button>
     </Layout>
   );
 };
