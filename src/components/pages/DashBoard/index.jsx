@@ -8,8 +8,7 @@ function DashBoard({ props }) {
   const { auth } = useParams();
   const history = useHistory();
 
-  console.log(props);
-  switch (auth) {
+  switch (userType) {
     case 'charity':
       return <CharityDashboard />;
     case 'seller':
