@@ -14,6 +14,7 @@ import RegisterItemPage from './RegisterItemPage';
 import RegisterCamgaignPage from './RegisterCamgaignPage';
 import PurchaseListPage from './PurchaseListPage';
 import OrderPage from './OrderPage';
+import NotFoundPage from './NotFoundPage';
 
 export {
   HomePage,
@@ -32,4 +33,5 @@ export {
   RegisterCamgaignPage,
   PurchaseListPage,
   OrderPage,
+  NotFoundPage,
 };

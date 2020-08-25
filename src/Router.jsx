@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import {
   HomePage,
@@ -18,7 +18,10 @@ import {
   RegisterCamgaignPage,
   PurchaseListPage,
   OrderPage,
+  NotFoundPage,
 } from 'components/pages';
+
+
 
 function Router() {
   return (
@@ -41,6 +44,23 @@ function Router() {
       <Route path="/order/:id" exact component={OrderPage} />
     </BrowserRouter>
   );
+}
+const IsLoggedIn = ({component: Component, loggedin, ...rest}) => {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        if (loggedin === true) {
+          return <Component {...props}/>
+      
+        } else {
+          return <NotFoundPage/>
+        }
+      }
+    }
+  />
+
+  )
 }
 
 export default Router;
