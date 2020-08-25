@@ -12,7 +12,7 @@ function SignUpPage() {
     console.log(userType, userName, userId, password);
     axios
       .post(
-        'http://ec2-54-180-160-14.ap-northeast-2.compute.amazonaws.com:8080/auth/join',
+        'http://localhost:8080/auth/join',
         {
           name : userName,
           email : userId,
