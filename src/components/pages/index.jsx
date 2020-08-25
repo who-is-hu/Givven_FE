@@ -1,5 +1,6 @@
 import HomePage from './HomePage';
 import MyPage from './MyPage';
+import DashBoard from './DashBoard';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import MarketPage from './MarketPage';
@@ -17,6 +18,7 @@ import OrderPage from './OrderPage';
 export {
   HomePage,
   MyPage,
+  DashBoard,
   SignInPage,
   SignUpPage,
   MarketPage,

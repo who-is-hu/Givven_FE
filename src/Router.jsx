@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import {
   HomePage,
   MyPage,
+  DashBoard,
   SignInPage,
   SignUpPage,
   MarketPage,
@@ -23,21 +24,21 @@ function Router() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={HomePage} />
-      <Route path="/myPage/:auth" component={MyPage} />
-      <Route path="/dashboard/:auth" component={MyPage} />
-      <Route path="/signIn" component={SignInPage} />
-      <Route path="/signUp" component={SignUpPage} />
+      <Route path="/myPage/:auth" exact component={MyPage} />
+      <Route path="/dashboard/:auth" exact component={DashBoard} />
+      <Route path="/signIn" exact component={SignInPage} />
+      <Route path="/signUp" exact component={SignUpPage} />
       <Route path="/market" exact component={MarketPage} />
-      <Route path="/market/:id" component={ItemDetailPage} />
+      <Route path="/market/:id" exact component={ItemDetailPage} />
       <Route path="/main" exact component={MainPage} />
-      <Route path="/campaign/:id" component={CampaignDetailPage} />
-      <Route path="/transaction" component={InquiryTransactionPage} />
-      <Route path="/donate/:id" component={DonatePage} />
-      <Route path="/purchase/:id" component={PurchasePage} />
-      <Route path="/registerItem" component={RegisterItemPage} />
-      <Route path="/registerCampaign" component={RegisterCamgaignPage} />
-      <Route path="/purchaseList/:id" component={PurchaseListPage} />
-      <Route path="/order/:id" component={OrderPage} />
+      <Route path="/campaign/:id" exact component={CampaignDetailPage} />
+      <Route path="/transaction" exact component={InquiryTransactionPage} />
+      <Route path="/donate/:id" exact component={DonatePage} />
+      <Route path="/purchase/:id" exact component={PurchasePage}/>
+      <Route path="/registerItem" exact component={RegisterItemPage} />
+      <Route path="/registerCampaign" exact component={RegisterCamgaignPage} />
+      <Route path="/purchaseList/:id" exact component={PurchaseListPage} />
+      <Route path="/order/:id" exact component={OrderPage} />
     </BrowserRouter>
   );
 }
