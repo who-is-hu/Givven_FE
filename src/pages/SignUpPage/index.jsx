@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function SignUpPage() {
   const [userType, setUserType] = useState('');
@@ -9,6 +10,23 @@ function SignUpPage() {
   const onSubmit = e => {
     e.preventDefault();
     console.log(userType, userName, userId, password);
+    axios
+      .post(
+        'http://ec2-54-180-160-14.ap-northeast-2.compute.amazonaws.com:8080/auth/join',
+        {
+          name : userName,
+          email : userId,
+          password : password,
+          type : userType
+        },
+        { withCredentials: true },
+      )
+      .then(rsp => {
+        console.log(rsp);
+      })
+      .catch(e => {
+        console.error(e);
+      });
   };
 
   const onChangeName = e => {
@@ -31,19 +49,19 @@ function SignUpPage() {
             type="button"
             name="userType"
             value="normal"
-            onClick={() => setUserType(0)}
+            onClick={() => setUserType("normal")}
           />
           <input
             type="button"
             name="userType"
             value="charity"
-            onClick={() => setUserType(1)}
+            onClick={() => setUserType("charity")}
           />
           <input
             type="button"
             name="userType"
             value="seller"
-            onClick={() => setUserType(2)}
+            onClick={() => setUserType("seller")}
           />
         </div>
 
