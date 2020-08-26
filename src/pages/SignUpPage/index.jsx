@@ -12,7 +12,7 @@ function SignUpPage() {
     console.log(userType, userName, userId, password);
     axios
       .post(
-        'http://localhost:8080/auth/join',
+        '/join',
         {
           name : userName,
           email : userId,
