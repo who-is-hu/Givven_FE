@@ -9,23 +9,22 @@ function SignUpPage() {
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log(typeof userType);
     console.log(userType, userName, userId, password);
+
     axios
-      .post(
-        '/join',
-        {
-          name : userName,
-          email : userId,
-          password : password,
-          type : userType
-        },
-        { withCredentials: true },
-      )
+      .post('/auth/join', {
+        name: userName,
+        email: userId,
+        password: password,
+        type: userType,
+      })
       .then(rsp => {
         console.log(rsp);
       })
       .catch(e => {
         console.error(e);
+        console.log(e.response);
       });
   };
 
@@ -40,6 +39,20 @@ function SignUpPage() {
   const onChangePassword = e => {
     setPassword(e.target.value);
   };
+  const logout = e => {
+    //이미 로그인 되어있습니다 메세지를 로그아웃하기 위해 만든 버튼 추후에 삭제
+    e.preventDefault();
+
+    axios
+      .get('/auth/logout')
+      .then(rsp => {
+        console.log(rsp);
+      })
+      .catch(e => {
+        console.error(e);
+        console.log(e.response);
+      });
+  };
 
   return (
     <>
@@ -49,19 +62,19 @@ function SignUpPage() {
             type="button"
             name="userType"
             value="normal"
-            onClick={() => setUserType("normal")}
+            onClick={() => setUserType('normal')}
           />
           <input
             type="button"
             name="userType"
             value="charity"
-            onClick={() => setUserType("charity")}
+            onClick={() => setUserType('charity')}
           />
           <input
             type="button"
             name="userType"
             value="seller"
-            onClick={() => setUserType("seller")}
+            onClick={() => setUserType('seller')}
           />
         </div>
 
@@ -93,6 +106,7 @@ function SignUpPage() {
       <button type="submit" form="signUpForm">
         회원가입 완료
       </button>
+      <button onClick={logout}>로그아웃</button>
     </>
   );
 }
