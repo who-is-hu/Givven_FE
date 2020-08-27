@@ -17,7 +17,7 @@ import {
   DonatePage,
   PurchasePage,
   RegisterItemPage,
-  RegisterCamgaignPage,
+  RegistCamgaignPage,
   PurchaseListPage,
   OrderPage,
   NotFoundPage,
@@ -62,13 +62,13 @@ function Router() {
         <AuthorityRouter
           path="/registerItem"
           exact
-          component={RegisterCamgaignPage}
+          component={RegisterItemPage}
           userTypes={['seller']}
         />
         <AuthorityRouter
-          path="/registerCampaign"
+          path="/registCampaign"
           exact
-          component={RegisterItemPage}
+          component={RegistCamgaignPage}
           userTypes={['charity']}
         />
         <AuthorityRouter
@@ -95,7 +95,7 @@ const AuthorityRouter = ({ userTypes, children, component, ...rest }) => {
   return (
     <Route
       {...rest}
-      component={userTypes.includes(user.type) ? component : <NotFoundPage />}
+      component={userTypes.includes(user.type) ? component : NotFoundPage}
     />
   );
 };

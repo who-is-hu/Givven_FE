@@ -11,7 +11,7 @@ import InquiryTransactionPage from './InquiryTransactionPage';
 import DonatePage from './DonatePage';
 import PurchasePage from './PurchasePage';
 import RegisterItemPage from './RegisterItemPage';
-import RegisterCamgaignPage from './RegisterCamgaignPage';
+import RegistCamgaignPage from './RegistCamgaignPage';
 import PurchaseListPage from './PurchaseListPage';
 import OrderPage from './OrderPage';
 import NotFoundPage from './NotFoundPage';
@@ -30,7 +30,7 @@ export {
   DonatePage,
   PurchasePage,
   RegisterItemPage,
-  RegisterCamgaignPage,
+  RegistCamgaignPage,
   PurchaseListPage,
   OrderPage,
   NotFoundPage,
