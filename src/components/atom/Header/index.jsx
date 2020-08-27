@@ -5,7 +5,7 @@ import axios from 'axios';
 import Logo from 'assets/logo.PNG';
 
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Wrapper = styled.nav`
   width: 100%;
@@ -59,6 +59,7 @@ const Nav = styled.ul`
 const HeaderNav = () => {
   const user = useSelector(state => state.auth.user);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const createElementByUserType = () => {
     if (user.type === 'normal')
@@ -73,6 +74,7 @@ const HeaderNav = () => {
       .catch(e => {
         alert(e.response.data.message);
       });
+    dispatch({ type: 'SET_USER', user: null });
   };
   return (
     <Wrapper>
@@ -86,8 +88,8 @@ const HeaderNav = () => {
         {user ? (
           <Menu
             onClick={() => {
-              alert('logout');
               logout();
+              alert('logout');
               history.push('/');
             }}
           >
