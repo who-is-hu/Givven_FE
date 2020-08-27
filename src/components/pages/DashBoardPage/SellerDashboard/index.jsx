@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from 'components/layout';
 import axios from 'axios';
-import ItemCard from './itemcard';
+import { ItemCard } from '../../../atom/index';
 
 function SellerDashboard() {
   const [itemArr, SetItemArr] = useState([]);
@@ -14,7 +14,6 @@ function SellerDashboard() {
       console.log(itemArr);
     });
   }, []);
-
   return (
     <Layout>
       <div>판매자 마이페이지</div>
