@@ -1,25 +1,12 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router';
+import Layout from 'components/layout';
 
-import NormalMyPage from './NormalMyPage';
-import CharityDashboard from './CharityDashboard';
-import SellerDashboard from './SellerDashboard';
-
-function MyPage({ props }) {
-  const { auth } = useParams();
-  const history = useHistory();
-
-  console.log(props);
-  switch (auth) {
-    case 'normal':
-      return <NormalMyPage />;
-    case 'charity':
-      return <CharityDashboard />;
-    case 'seller':
-      return <SellerDashboard />;
-    default:
-      history.goBack();
-  }
+function NormalMyPage() {
+  return (
+    <Layout>
+      <div>일반회원 마이페이지</div>
+    </Layout>
+  );
 }
 
-export default MyPage;
+export default NormalMyPage;

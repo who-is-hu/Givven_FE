@@ -1,5 +1,6 @@
 import HomePage from './HomePage';
 import MyPage from './MyPage';
+import DashBoardPage from './DashBoardPage';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import MarketPage from './MarketPage';
@@ -13,10 +14,12 @@ import RegisterItemPage from './RegisterItemPage';
 import RegisterCamgaignPage from './RegisterCamgaignPage';
 import PurchaseListPage from './PurchaseListPage';
 import OrderPage from './OrderPage';
+import NotFoundPage from './NotFoundPage';
 
 export {
   HomePage,
   MyPage,
+  DashBoardPage,
   SignInPage,
   SignUpPage,
   MarketPage,
@@ -30,4 +33,5 @@ export {
   RegisterCamgaignPage,
   PurchaseListPage,
   OrderPage,
+  NotFoundPage,
 };

@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from 'components/layout';
 
-function MainPage() {
+function CharityDashboard() {
   return (
     <Layout>
-      <div>메인페이지</div>
+      <div>사회단체 마이페이지</div>
     </Layout>
   );
 }
 
-export default MainPage;
+export default CharityDashboard;
