@@ -25,7 +25,7 @@ function SellerDashboard() {
           itemArr.map(item => (
             <ItemCard
               key={item.id}
-              title_img={item.title_img}
+              titleImg={item.title_img}
               name={item.name}
               price={item.price}
               stock={item.stock}
