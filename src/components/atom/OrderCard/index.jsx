@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
-import './index.css';
+const CardWrap = styled.div`
+  border: 1px solid #ffa734ea;
+  width: 100px;
+  margin: 10px 0px;
+`;
 
 function OrderCard({ id, name, count }) {
   const history = useHistory();
   return (
-    <div className="orderCard" onClick={() => history.push(`/order/:${id}`)}>
+    <CardWrap
+      className="orderCard"
+      onClick={() => history.push(`/order/:${id}`)}
+    >
       <div>{name}</div>
       <div>{count}</div>
-    </div>
+    </CardWrap>
   );
 }
 
