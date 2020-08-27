@@ -31,6 +31,7 @@ function SellerDashboard() {
           itemArr.map(item => (
             <ItemCard
               key={item.id}
+              id={item.id}
               titleImg={item.title_img}
               name={item.name}
               price={item.price}
@@ -47,6 +48,7 @@ function SellerDashboard() {
           orderArr.map(order => (
             <OrderCard
               key={order.id}
+              id={order.id}
               name={order.item.name}
               count={order.orderCount}
             />
