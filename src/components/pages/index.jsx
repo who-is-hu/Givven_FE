@@ -1,6 +1,6 @@
 import HomePage from './HomePage';
 import MyPage from './MyPage';
-import DashBoard from './DashBoard';
+import DashBoardPage from './DashBoardPage';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 import MarketPage from './MarketPage';
@@ -19,7 +19,7 @@ import NotFoundPage from './NotFoundPage';
 export {
   HomePage,
   MyPage,
-  DashBoard,
+  DashBoardPage,
   SignInPage,
   SignUpPage,
   MarketPage,

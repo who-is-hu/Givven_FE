@@ -1,11 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import {
   HomePage,
   MyPage,
-  DashBoard,
+  DashBoardPage,
   SignInPage,
   SignUpPage,
   MarketPage,
@@ -22,14 +23,23 @@ import {
   NotFoundPage,
 } from 'components/pages';
 
-
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <CheckAuthority path="/myPage" exact component={MyPage} userType={["normal"]} />
-        <CheckAuthority path="/dashboard/:userType" exact component={DashBoard} userType={["seller", "charity"]}/>
+        <AuthorityRouter
+          path="/myPage"
+          exact
+          component={MyPage}
+          userTypes={['normal']}
+        />
+        <AuthorityRouter
+          path="/dashboard"
+          exact
+          component={DashBoardPage}
+          userTypes={['seller', 'charity']}
+        />
         <Route path="/signIn" exact component={SignInPage} />
         <Route path="/signUp" exact component={SignUpPage} />
         <Route path="/market" exact component={MarketPage} />
@@ -37,40 +47,64 @@ function Router() {
         <Route path="/main" exact component={MainPage} />
         <Route path="/campaign/:id" exact component={CampaignDetailPage} />
         <Route path="/transaction" exact component={InquiryTransactionPage} />
-        <CheckAuthority path="/donate/:id" exact component={DonatePage} userType={["normal"]}/>
-        <CheckAuthority path="/purchase/:id" exact component={PurchasePage} userType={["charity"]}/>
-        <CheckAuthority path="/registerItem" exact component={RegisterItemPage} userType={["seller"]}/>
-        <CheckAuthority path="/registerCampaign" exact component={RegisterCamgaignPage} userType={["charity"]}/>
-        <CheckAuthority path="/purchaseList/:id" exact component={PurchaseListPage} userType={["charity"]}/>
-        <CheckAuthority path="/order/:id" exact component={OrderPage} userType={["seller"]}/>
+        <AuthorityRouter
+          path="/donate/:id"
+          exact
+          component={DonatePage}
+          userTypes={['normal']}
+        />
+        <AuthorityRouter
+          path="/purchase/:id"
+          exact
+          component={PurchaseListPage}
+          userTypes={['charity']}
+        />
+        <AuthorityRouter
+          path="/registerItem"
+          exact
+          component={RegisterCamgaignPage}
+          userTypes={['seller']}
+        />
+        <AuthorityRouter
+          path="/registerCampaign"
+          exact
+          component={RegisterItemPage}
+          userTypes={['charity']}
+        />
+        <AuthorityRouter
+          path="/purchaseList/:id"
+          exact
+          component={PurchasePage}
+          userTypes={['charity']}
+        />
+
+        <AuthorityRouter
+          path="/order/:id"
+          exact
+          component={OrderPage}
+          userTypes={['seller']}
+        />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );
 }
-const CheckAuthority = ({component: Component, userType, ...rest}) => {
-  console.log(useSelector(state=>state.auth.user));
+const AuthorityRouter = ({ userTypes, children, component, ...rest }) => {
   const user = useSelector(state => state.auth.user);
+  console.log(userTypes);
+  console.log(user.type);
+  if (!user) return <Route {...rest} component={SignInPage} />;
   return (
     <Route
       {...rest}
-      render={props => {
-        if (userType.length < 2) {
-          if(user === userType[0]) {
-            return <Component {...props}/>
-          } else {
-            return <NotFoundPage />
-          }
-        } else if (userType.length === 2) {
-          if (user === userType[0] || user === userType[1]) {
-            return <Component {...props}/>
-          } else {
-            return <NotFoundPage />
-          }
-        } else {
-          return <NotFoundPage/>
-        }}}
-  />
-)}
+      component={userTypes.includes(user.type) ? component : <NotFoundPage />}
+    />
+  );
+};
+
+AuthorityRouter.propTypes = {
+  userTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  component: PropTypes.func.isRequired,
+};
 
 export default Router;

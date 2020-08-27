@@ -63,11 +63,7 @@ const HeaderNav = () => {
   const createElementByUserType = () => {
     if (user.type === 'normal')
       return <Menu onClick={() => history.push('/myPage')}>마이페이지</Menu>;
-    return (
-      <Menu onClick={() => history.push(`/dashboard/${user.type}`)}>
-        대시보드
-      </Menu>
-    );
+    return <Menu onClick={() => history.push(`/dashboard`)}>대시보드</Menu>;
   };
 
   const logout = async () => {

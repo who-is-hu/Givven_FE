@@ -1,14 +1,14 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 
 import CharityDashboard from './CharityDashboard';
 import SellerDashboard from './SellerDashboard';
 
-function DashBoard({ props }) {
-  const { auth } = useParams();
+function DashBoard() {
   const history = useHistory();
-
-  switch (userType) {
+  const user = useSelector(state => state.auth.user);
+  switch (user.type) {
     case 'charity':
       return <CharityDashboard />;
     case 'seller':
