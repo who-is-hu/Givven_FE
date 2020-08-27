@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import Layout from 'components/layout';
 import axios from 'axios';
-import { ItemCard } from '../../../atom/index';
+import { ItemCard, OrderCard } from '../../../atom/index';
 
 function SellerDashboard() {
   const [itemArr, SetItemArr] = useState([]);
-  const [isLoading, SetIsLoading] = useState(true);
+  const [isItemArrLoading, SetIsItemArrLoading] = useState(true);
+  const [orderArr, SetOrderArr] = useState([]);
+  const [isOrderArrLoading, SetIsOrderArrLoading] = useState(true);
 
   useEffect(() => {
     axios.get('/item/myItems').then(rsp => {
       SetItemArr(rsp.data.data);
-      SetIsLoading(false);
-      console.log(itemArr);
+      SetIsItemArrLoading(false);
+    });
+    axios.get('/tradeLog/myOrders').then(rsp => {
+      SetOrderArr(rsp.data.data);
+      SetIsOrderArrLoading(false);
     });
   }, []);
+
   return (
     <Layout>
       <div>판매자 마이페이지</div>
       <div>
         내 아이템 리스트
-        {isLoading ? (
+        {isItemArrLoading ? (
           <div> loading </div>
         ) : (
           itemArr.map(item => (
@@ -29,6 +35,20 @@ function SellerDashboard() {
               name={item.name}
               price={item.price}
               stock={item.stock}
+            />
+          ))
+        )}
+      </div>
+      <div>
+        내 주문 목록 리스트
+        {isOrderArrLoading ? (
+          <div> loading </div>
+        ) : (
+          orderArr.map(order => (
+            <OrderCard
+              key={order.id}
+              name={order.item.name}
+              count={order.orderCount}
             />
           ))
         )}
