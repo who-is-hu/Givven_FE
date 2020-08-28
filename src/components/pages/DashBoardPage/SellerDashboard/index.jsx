@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import Layout from 'components/layout';
 import axios from 'axios';
 import { ItemCard, OrderCard } from '../../../atom/index';
@@ -8,6 +9,7 @@ function SellerDashboard() {
   const [isItemArrLoading, SetIsItemArrLoading] = useState(true);
   const [orderArr, SetOrderArr] = useState([]);
   const [isOrderArrLoading, SetIsOrderArrLoading] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     axios.get('/item/myItems').then(rsp => {
@@ -23,6 +25,12 @@ function SellerDashboard() {
   return (
     <Layout>
       <div>판매자 마이페이지</div>
+      <div>
+        <button type="button" onClick={() => history.push('/registerItem')}>
+          상품등록
+        </button>
+        <button type="button">충전</button>
+      </div>
       <div>
         내 아이템 리스트
         {isItemArrLoading ? (
