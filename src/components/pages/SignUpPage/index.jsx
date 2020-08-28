@@ -29,12 +29,13 @@ function SignUpPage() {
       })
       .then(rsp => {
         console.log(rsp);
+        dispatch({ type: 'SET_LOADING', loading: false });
       })
       .catch(e => {
         console.error(e);
         console.log(e.response);
+        dispatch({ type: 'SET_LOADING', loading: false });
       });
-    dispatch({ type: 'SET_LOADING', loading: false });
   };
 
   const onChangeInputs = e => {
