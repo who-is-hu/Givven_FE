@@ -33,6 +33,7 @@ const SignInPage = () => {
       })
       .catch(e => {
         alert(e.response.data.message);
+        dispatch({ type: 'SET_LOADING', loading: false });
       });
   };
 
