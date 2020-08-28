@@ -7,6 +7,7 @@ const CardWrap = styled.div`
   border: 1px solid #ffa734ea;
   width: 100px;
   margin: 10px 0px;
+  cursor: pointer;
 `;
 
 function OrderCard({ id, name, count }) {
