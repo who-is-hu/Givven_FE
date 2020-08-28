@@ -91,8 +91,6 @@ function Router() {
 }
 const AuthorityRouter = ({ userTypes, children, component, ...rest }) => {
   const user = useSelector(state => state.auth.user);
-  console.log(userTypes);
-  console.log(user.type);
   if (!user) return <Route {...rest} component={SignInPage} />;
   return (
     <Route
