@@ -29,7 +29,7 @@ function SellerDashboard() {
         <button type="button" onClick={() => history.push('/registerItem')}>
           상품등록
         </button>
-        <button type="button">충전</button>
+        <button type="button">환전</button>
       </div>
       <div>
         내 아이템 리스트
