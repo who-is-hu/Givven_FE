@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Layout from 'components/layout';
 import axios from 'axios';
-import { ItemCard, OrderCard } from '../../../atom/index';
+import { ItemCard, OrderCard } from 'components/atom';
 
 function SellerDashboard() {
   const [itemArr, SetItemArr] = useState([]);
@@ -26,7 +26,7 @@ function SellerDashboard() {
     <Layout>
       <div>판매자 마이페이지</div>
       <div>
-        <button type="button" onClick={() => history.push('/registerItem')}>
+        <button type="button" onClick={() => history.push('/registItem')}>
           상품등록
         </button>
         <button type="button">환전</button>
