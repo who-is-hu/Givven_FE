@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import Layout from 'components/layout';
 import { SpinnerScreen } from 'components/atom';
+import defaultImg from 'assets/logo.PNG';
 
 const Form = styled.form`
   display: flex;
@@ -15,18 +16,18 @@ const Form = styled.form`
   width: 500px;
 `;
 
+const ImgWrapper = styled.div`
+  width: 500px;
+  height: 500px;
+`;
+
 function RegistCamgaignPage() {
   const { register, handleSubmit } = useForm();
-  const [form, setForm] = useState({});
+  const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const history = useHistory();
   const loading = useSelector(state => state.shared.loading);
-  const onInputChange = e => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+
   const onSubmit = async data => {
     dispatch({ type: 'SET_LOADING', loading: true });
 
@@ -74,41 +75,43 @@ function RegistCamgaignPage() {
       <SpinnerScreen visible={loading} />
       <Layout>
         <h1>캠페인등록 페이지</h1>
+        <ImgWrapper>
+          <img src={file || defaultImg} alt="thumb" />
+        </ImgWrapper>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <input
             name="name"
             type="text"
             ref={register}
             placeholder="campaign name"
-            onChange={e => onInputChange(e)}
           />
           <input
             name="due_day"
             type="date"
             ref={register}
             placeholder="due day"
-            onChange={e => onInputChange(e)}
           />
           <input
             name="dest_money"
             type="text"
             ref={register}
             placeholder="dest money"
-            onChange={e => onInputChange(e)}
           />
           <input
             name="content"
             type="textarea"
             ref={register}
             placeholder="short campaign info"
-            onChange={e => onInputChange(e)}
           />
           <input
             name="file"
             type="file"
             ref={register}
             placeholder="file"
-            onChange={e => onInputChange(e)}
+            onChange={e => {
+              console.log(e.target.files);
+              setFile(URL.createObjectURL(e.target.files[0]));
+            }}
           />
           <input name="submit" type="submit" ref={register} />
         </Form>
