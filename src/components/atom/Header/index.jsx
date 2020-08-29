@@ -16,7 +16,7 @@ const Wrapper = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
-  padding: 16px 32px 16px 16px;
+  padding: 16px 32px;
 `;
 const LogoWrapper = styled.div`
   display: flex;
