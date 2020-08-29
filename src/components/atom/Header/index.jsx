@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Wrapper = styled.nav`
   width: 100%;
-  height: 60px;
+  height: 154px;
   display: flex;
   justify-content: space-between;
   align-items: center;
