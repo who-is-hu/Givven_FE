@@ -17,25 +17,18 @@ function CampaignDetailPage() {
     });
   }, []);
 
-  const IsNormal = () => {
-    if (user.type === 'normal') {
-      return (
-        <div>
-          <button type="submit" onClick={() => history.push(`/donate/${id}`)}>
-            기부하기
-          </button>
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <Layout>
       <div>캠페인 디테일 : {id}</div>
       <img src={campaign.title_img} alt="campaign title" />
       <div>{campaign.name}</div>
-      {user && IsNormal()}
+      {user.type === 'normal' ? (
+        <div>
+          <button type="submit" onClick={() => history.push(`/donate/${id}`)}>
+            기부하기
+          </button>
+        </div>
+      ) : null}
     </Layout>
   );
 }
