@@ -21,9 +21,14 @@ function ItemDetailPage() {
       });
   }, []);
 
-  const PurchaseButton = () => {
-    if (user.type === 'charity') {
-      return (
+  return (
+    <Layout>
+      <img src={item.title_img} alt="item ittle" />
+      <div>{item.name}</div>
+      <div>{item.price}</div>
+      <div>{item.stock}</div>
+      <div>{item.content}</div>
+      {user.type === 'charity' ? (
         <div>
           <input type="text" />
           <button
@@ -35,19 +40,7 @@ function ItemDetailPage() {
             버튼
           </button>
         </div>
-      );
-    }
-    return null;
-  };
-
-  return (
-    <Layout>
-      <img src={item.title_img} alt="item ittle" />
-      <div>{item.name}</div>
-      <div>{item.price}</div>
-      <div>{item.stock}</div>
-      <div>{item.content}</div>
-      {user && PurchaseButton()}
+      ) : null}
     </Layout>
   );
 }
