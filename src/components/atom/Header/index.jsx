@@ -37,6 +37,7 @@ const Word = styled.span`
   font-size: 1.2rem;
   color: #003d85;
 `;
+
 const Menu = styled.li`
   display: flex;
   justify-content: center;
@@ -95,7 +96,9 @@ const HeaderNav = () => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <LogoBox>{/* <img src={Logo} alt="logo.png" /> */}</LogoBox>
+        <LogoBox onClick={() => history.push('/')}>
+          {/* <img src={Logo} alt="logo.png" /> */}
+        </LogoBox>
         <Word>문구문구 저스트 두잇!</Word>
       </LogoWrapper>
       <MenuNav>
