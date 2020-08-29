@@ -56,7 +56,7 @@ function Router() {
         <AuthorityRouter
           path="/purchase/:id"
           exact
-          component={PurchaseListPage}
+          component={PurchasePage}
           userTypes={['charity']}
         />
         <AuthorityRouter
@@ -74,7 +74,7 @@ function Router() {
         <AuthorityRouter
           path="/purchaseList/:id"
           exact
-          component={PurchasePage}
+          component={PurchaseListPage}
           userTypes={['charity']}
         />
 
