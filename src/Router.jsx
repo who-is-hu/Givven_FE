@@ -16,7 +16,7 @@ import {
   InquiryTransactionPage,
   DonatePage,
   PurchasePage,
-  RegisterItemPage,
+  RegistItemPage,
   RegistCamgaignPage,
   PurchaseListPage,
   OrderPage,
@@ -60,9 +60,9 @@ function Router() {
           userTypes={['charity']}
         />
         <AuthorityRouter
-          path="/registerItem"
+          path="/registItem"
           exact
-          component={RegisterItemPage}
+          component={RegistItemPage}
           userTypes={['seller']}
         />
         <AuthorityRouter

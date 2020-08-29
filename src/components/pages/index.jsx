@@ -10,7 +10,7 @@ import CampaignDetailPage from './CampaignDetailPage';
 import InquiryTransactionPage from './InquiryTransactionPage';
 import DonatePage from './DonatePage';
 import PurchasePage from './PurchasePage';
-import RegisterItemPage from './RegisterItemPage';
+import RegistItemPage from './RegistItemPage';
 import RegistCamgaignPage from './RegistCamgaignPage';
 import PurchaseListPage from './PurchaseListPage';
 import OrderPage from './OrderPage';
@@ -29,7 +29,7 @@ export {
   InquiryTransactionPage,
   DonatePage,
   PurchasePage,
-  RegisterItemPage,
+  RegistItemPage,
   RegistCamgaignPage,
   PurchaseListPage,
   OrderPage,
