@@ -21,6 +21,7 @@ import {
   PurchaseListPage,
   OrderPage,
   NotFoundPage,
+  DummyPage,
 } from 'components/pages';
 
 function Router() {
@@ -84,6 +85,7 @@ function Router() {
           component={OrderPage}
           userTypes={['seller']}
         />
+        <Route path="/dummy" exact component={DummyPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
