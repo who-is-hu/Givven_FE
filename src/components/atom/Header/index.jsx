@@ -17,6 +17,8 @@ const Wrapper = styled.nav`
   top: 0;
   left: 0;
   padding: 16px 32px;
+  z-index: 99;
+  background-color: white;
 `;
 const LogoWrapper = styled.div`
   display: flex;

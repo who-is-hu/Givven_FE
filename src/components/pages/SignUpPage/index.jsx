@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
 import axios from 'axios';
 import Layout from 'components/layout';
+import TypeSelect from './TypeSelect';
+
+const Form = styled.div`
+  display: ${props => (props.selected ? 'flex' : 'none')};
+  flex-direction: column;
+  width: 620px;
+`;
 
 function SignUpPage() {
   const [form, setForm] = useState({
@@ -12,6 +20,7 @@ function SignUpPage() {
     confirm: '',
     userType: 'normal',
   });
+  const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
   const onSubmit = async () => {
@@ -47,28 +56,17 @@ function SignUpPage() {
 
   return (
     <Layout>
-      <div>
-        <div>
-          <input
-            type="button"
-            name="userType"
-            value="normal"
-            onClick={e => onChangeInputs(e)}
-          />
-          <input
-            type="button"
-            name="userType"
-            value="charity"
-            onClick={e => onChangeInputs(e)}
-          />
-          <input
-            type="button"
-            name="userType"
-            value="seller"
-            onClick={e => onChangeInputs(e)}
-          />
-        </div>
-
+      <TypeSelect
+        selected={selected}
+        setUserType={type => {
+          setForm({
+            ...form,
+            userType: type,
+          });
+          setSelected(true);
+        }}
+      />
+      <Form selected={selected}>
         <label htmlFor="userName">
           이름
           <input
@@ -111,7 +109,7 @@ function SignUpPage() {
         <button type="submit" onClick={() => onSubmit()}>
           회원가입 완료
         </button>
-      </div>
+      </Form>
     </Layout>
   );
 }
