@@ -9,19 +9,23 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Wrapper = styled.nav`
   width: 100%;
-  height: 60px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   position: sticky;
   top: 0;
   left: 0;
-  padding: 0px 32px 0 48px;
+  padding: 16px 32px;
+`;
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 const LogoBox = styled.div`
-  width: 136px;
-  height: 40px;
+  width: 160px;
+  height: 68px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,13 +33,17 @@ const LogoBox = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
 `;
+const Word = styled.span`
+  font-size: 1.2rem;
+  color: #003d85;
+`;
 
 const Menu = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
   color: #18a0fb;
   padding: 0 36px;
   cursor: pointer;
@@ -49,11 +57,20 @@ const Menu = styled.li`
 const Nav = styled.ul`
   display: flex;
   justify-content: space-around;
-  height: 100%;
 
   ${Menu} ~ ${Menu} {
     margin-right: 4px;
   }
+`;
+
+const MenuNav = styled(Nav)`
+  align-self: flex-end;
+`;
+
+const AuthNav = styled(Nav)`
+  width: 360px;
+  justify-content: flex-end;
+  margin-top: 16px;
 `;
 
 const HeaderNav = () => {
@@ -63,8 +80,8 @@ const HeaderNav = () => {
 
   const createElementByUserType = () => {
     if (user.type === 'normal')
-      return <Menu onClick={() => history.push('/myPage')}>마이페이지</Menu>;
-    return <Menu onClick={() => history.push(`/dashboard`)}>대시보드</Menu>;
+      return <Menu onClick={() => history.push('/myPage')}>MY PAGE</Menu>;
+    return <Menu onClick={() => history.push(`/dashboard`)}>DASHBOARD </Menu>;
   };
 
   const logout = async () => {
@@ -78,13 +95,18 @@ const HeaderNav = () => {
   };
   return (
     <Wrapper>
-      <LogoBox>{/* <img src={Logo} alt="logo.png" /> */}</LogoBox>
-      <Nav>
-        <Menu onClick={() => history.push('/main')}>캠페인</Menu>
-        <Menu onClick={() => history.push('/market')}>상점</Menu>
+      <LogoWrapper>
+        <LogoBox onClick={() => history.push('/')}>
+          {/* <img src={Logo} alt="logo.png" /> */}
+        </LogoBox>
+        <Word>문구문구 저스트 두잇!</Word>
+      </LogoWrapper>
+      <MenuNav>
+        <Menu onClick={() => history.push('/main')}>CAMPAIGN</Menu>
+        <Menu onClick={() => history.push('/market')}>SHOP</Menu>
         {user && createElementByUserType()}
-      </Nav>
-      <Nav>
+      </MenuNav>
+      <AuthNav>
         {user ? (
           <Menu
             onClick={() => {
@@ -93,15 +115,15 @@ const HeaderNav = () => {
               history.push('/');
             }}
           >
-            로그아웃
+            LOGOUT
           </Menu>
         ) : (
           <>
-            <Menu onClick={() => history.push('/signIn')}>로그인</Menu>
-            <Menu onClick={() => history.push('/signUp')}>회원가입</Menu>
+            <Menu onClick={() => history.push('/signIn')}>SIGN IN </Menu>
+            <Menu onClick={() => history.push('/signUp')}>SIGN UP</Menu>
           </>
         )}
-      </Nav>
+      </AuthNav>
     </Wrapper>
   );
 };
