@@ -1,8 +1,99 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
 import axios from 'axios';
 import Layout from 'components/layout';
+import TypeSelect from './TypeSelect';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 85vh;
+  padding: 32px 32px;
+`;
+
+const Form = styled.div`
+  display: ${props => (props.selected ? 'flex' : 'none')};
+  flex-direction: column;
+  width: 400px;
+`;
+
+const Title = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #005ea3;
+  align-self: flex-start;
+  margin-bottom: 20px;
+`;
+
+const Subs = styled.p`
+  font-size: 1.1rem;
+  color: #00408b;
+  align-self: flex-start;
+  margin-bottom: 80px;
+
+  & > span {
+    color: #009ba5;
+  }
+`;
+const StyledInput = styled.input`
+  width: 100%;
+  height: 52px;
+  background-color: #fff;
+  border: 1px solid #01656b;
+  border-radius: 15px;
+  padding: 12px 20px;
+
+  ::placeholder {
+    font-size: 1.0625rem;
+    letter-spacing: -0.015em;
+  }
+
+  & ~ & {
+    margin-top: 20px;
+  }
+
+  :focus {
+    outline: none;
+  }
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background: #00408b;
+  border: none;
+  transition: all 300ms ease;
+
+  :focus {
+    outline: none;
+  }
+
+  :hover {
+    opacity: 0.8;
+  }
+`;
+
+const GoBackButton = styled(StyledButton)`
+  background: #999999;
+`;
+
+const convert = {
+  normal: '기부자',
+  charity: '사회단체',
+  seller: '판매자',
+};
 
 function SignUpPage() {
   const [form, setForm] = useState({
@@ -12,6 +103,7 @@ function SignUpPage() {
     confirm: '',
     userType: 'normal',
   });
+  const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();
 
   const onSubmit = async () => {
@@ -47,71 +139,59 @@ function SignUpPage() {
 
   return (
     <Layout>
-      <div>
-        <div>
-          <input
-            type="button"
-            name="userType"
-            value="normal"
-            onClick={e => onChangeInputs(e)}
-          />
-          <input
-            type="button"
-            name="userType"
-            value="charity"
-            onClick={e => onChangeInputs(e)}
-          />
-          <input
-            type="button"
-            name="userType"
-            value="seller"
-            onClick={e => onChangeInputs(e)}
-          />
-        </div>
-
-        <label htmlFor="userName">
-          이름
-          <input
-            type="text"
-            name="name"
-            id="userName"
-            onChange={e => onChangeInputs(e)}
-          />
-        </label>
-
-        <label htmlFor="userId">
-          이메일
-          <input
+      <TypeSelect
+        selected={selected}
+        setUserType={type => {
+          setForm({
+            ...form,
+            userType: type,
+          });
+          setSelected(true);
+        }}
+      />
+      <Container>
+        <Form selected={selected}>
+          <Title>Sign Up</Title>
+          <Subs>
+            <span>{convert[form.userType]}</span> 계정을 생성합니다.
+          </Subs>
+          <StyledInput
             type="text"
             name="email"
             id="userId"
             onChange={e => onChangeInputs(e)}
+            placeholder="이메일"
           />
-        </label>
+          <StyledInput
+            type="text"
+            name="name"
+            id="userName"
+            onChange={e => onChangeInputs(e)}
+            placeholder="이름"
+          />
 
-        <label htmlFor="password">
-          비밀번호
-          <input
+          <StyledInput
             type="password"
             name="password"
             id="password"
             onChange={e => onChangeInputs(e)}
+            placeholder="비밀번호"
           />
-        </label>
-
-        <label htmlFor="confirm">
-          비밀번호 확인
-          <input
+          <StyledInput
             type="password"
             name="confirm"
             id="confirm"
             onChange={e => onChangeInputs(e)}
+            placeholder="비밀번호 확인"
           />
-        </label>
-        <button type="submit" onClick={() => onSubmit()}>
-          회원가입 완료
-        </button>
-      </div>
+          <StyledButton type="submit" onClick={() => onSubmit()}>
+            Sign Up
+          </StyledButton>
+          <GoBackButton type="button" onClick={() => setSelected(false)}>
+            뒤로가기
+          </GoBackButton>
+        </Form>
+      </Container>
     </Layout>
   );
 }
