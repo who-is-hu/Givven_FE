@@ -13,16 +13,21 @@ function NormalMyPage() {
   const [myPoint, SetMyPoint] = useState();
 
   useEffect(() => {
-    axios.get('/tradeLog/myDonations/ing').then(rsp => {
-      SetIngCampaignArr(rsp.data.data.data);
-    });
-    axios.get('/tradeLog/myDonations/end').then(rsp => {
-      console.log(rsp.data.data.data);
-      SetEndCampaignArr(rsp.data.data.data);
-    });
-    axios.get('/point').then(rsp => {
-      SetMyPoint(rsp.data.point);
-    });
+    const fetchData = async () => {
+      await axios.get('/tradeLog/myDonations/ing').then(rsp => {
+        console.log(rsp);
+        SetIngCampaignArr(rsp.data);
+      });
+      await axios.get('/tradeLog/myDonations/end').then(rsp => {
+        console.log(rsp);
+        SetEndCampaignArr(rsp.data);
+      });
+      await axios.get('/point').then(rsp => {
+        console.log(rsp);
+        SetMyPoint(rsp.point);
+      });
+    };
+    fetchData();
   }, []);
 
   return (
@@ -38,9 +43,9 @@ function NormalMyPage() {
           {ingCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
@@ -49,9 +54,9 @@ function NormalMyPage() {
           {endCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
