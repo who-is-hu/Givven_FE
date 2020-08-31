@@ -16,7 +16,6 @@ function ItemDetailPage() {
       await axios
         .get(`/item/detail/${id}`)
         .then(rsp => {
-          console.log(rsp);
           SetItem(rsp.data);
         })
         .catch(e => {
