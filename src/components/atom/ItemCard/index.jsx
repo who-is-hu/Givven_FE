@@ -40,7 +40,7 @@ const ItemCard = ({ id, titleImg, name, price }) => {
   return (
     <CardWrap
       className="itemCard"
-      onClick={() => history.push(`/market/:${id}`)}
+      onClick={() => history.push(`/market/${id}`)}
     >
       <Img />
       <Text>상품명 : {name}</Text>
