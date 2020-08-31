@@ -12,14 +12,27 @@ function SellerDashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get('/item/myItems').then(rsp => {
-      SetItemArr(rsp.data.data);
-      SetIsItemArrLoading(false);
-    });
-    axios.get('/tradeLog/myOrders').then(rsp => {
-      SetOrderArr(rsp.data.data);
-      SetIsOrderArrLoading(false);
-    });
+    const fetchData = async () => {
+      await axios
+        .get('/item/myItems')
+        .then(rsp => {
+          SetItemArr(rsp.data);
+          SetIsItemArrLoading(false);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+      await axios
+        .get('/tradeLog/myOrders')
+        .then(rsp => {
+          SetOrderArr(rsp.data);
+          SetIsOrderArrLoading(false);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    };
+    fetchData();
   }, []);
 
   return (

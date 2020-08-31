@@ -7,14 +7,22 @@ function MarketPage() {
   const [itemArr, SetItemArr] = useState([]);
 
   useEffect(() => {
-    axios.get('/item/items').then(rsp => {
-      SetItemArr(rsp.data.data);
-    });
+    const fetchData = async () => {
+      await axios
+        .get('/item/items')
+        .then(rsp => {
+          SetItemArr(rsp.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    };
+    fetchData();
   }, []);
 
   return (
     <Layout>
-      <div>상점</div>
+      <div>생젝</div>
       {itemArr.map(item => (
         <ItemCard
           key={item.id}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useHistory } from 'react-router';
@@ -11,14 +12,17 @@ function ItemDetailPage() {
   const user = useSelector(state => state.auth.user);
 
   useEffect(() => {
-    axios
-      .get(`/item/detail/${id}`)
-      .then(rsp => {
-        SetItem(rsp.data.data);
-      })
-      .catch(e => {
-        console.error(e);
-      });
+    const fetchData = async () => {
+      await axios
+        .get(`/item/detail/${id}`)
+        .then(rsp => {
+          SetItem(rsp.data);
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    };
+    fetchData();
   }, []);
 
   return (
@@ -34,7 +38,7 @@ function ItemDetailPage() {
           <button
             type="submit"
             onClick={() => {
-              history.push(`/purchase/:${id}`);
+              history.push(`/purchase/${id}`);
             }}
           >
             버튼

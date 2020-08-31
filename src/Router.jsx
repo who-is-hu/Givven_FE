@@ -18,8 +18,6 @@ import {
   PurchasePage,
   RegistItemPage,
   RegistCamgaignPage,
-  PurchaseListPage,
-  OrderPage,
   NotFoundPage,
   DummyPage,
 } from 'components/pages';
@@ -71,19 +69,6 @@ function Router() {
           exact
           component={RegistCamgaignPage}
           userTypes={['charity']}
-        />
-        <AuthorityRouter
-          path="/purchaseList/:id"
-          exact
-          component={PurchaseListPage}
-          userTypes={['charity']}
-        />
-
-        <AuthorityRouter
-          path="/order/:id"
-          exact
-          component={OrderPage}
-          userTypes={['seller']}
         />
         <Route path="/dummy" exact component={DummyPage} />
         <Route component={NotFoundPage} />
