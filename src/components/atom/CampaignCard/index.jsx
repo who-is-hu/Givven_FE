@@ -4,21 +4,35 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
 const CardWrap = styled.div`
-  border: 1px solid #ffa734ea;
-  width: 100px;
-  margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  width: 280px;
+  height: 300px;
+  margin: 10px 10px;
   cursor: pointer;
+  padding: 4px;
 `;
 
 const CampaignCard = ({ id, titleImg, name }) => {
   const history = useHistory();
+
+  const Img = styled.div`
+    width: 272px;
+    height: 292px;
+    background-image: url('${titleImg}');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  `;
 
   return (
     <CardWrap
       className="CampaignCard"
       onClick={() => history.push(`/campaign/:${id}`)}
     >
-      <img src={titleImg} alt="campaign_img" />
+      <Img />
       <div>{name}</div>
     </CardWrap>
   );
