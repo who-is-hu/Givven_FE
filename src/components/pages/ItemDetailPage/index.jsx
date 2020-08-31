@@ -39,7 +39,7 @@ function ItemDetailPage() {
           <button
             type="submit"
             onClick={() => {
-              history.push(`/purchase/:${id}`);
+              history.push(`/purchase/${id}`);
             }}
           >
             버튼
