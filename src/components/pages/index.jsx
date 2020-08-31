@@ -12,8 +12,6 @@ import DonatePage from './DonatePage';
 import PurchasePage from './PurchasePage';
 import RegistItemPage from './RegistItemPage';
 import RegistCamgaignPage from './RegistCamgaignPage';
-import PurchaseListPage from './PurchaseListPage';
-import OrderPage from './OrderPage';
 import NotFoundPage from './NotFoundPage';
 import DummyPage from './DummyPage';
 
@@ -32,8 +30,6 @@ export {
   PurchasePage,
   RegistItemPage,
   RegistCamgaignPage,
-  PurchaseListPage,
-  OrderPage,
   NotFoundPage,
   DummyPage,
 };
