@@ -7,6 +7,7 @@ import SUBTWO from 'assets/landing_sub_2.png';
 import NORMAL from 'assets/normal.png';
 import SELLER from 'assets/seller.png';
 import CHARITY from 'assets/charity.png';
+import { useHistory } from 'react-router';
 
 const Container = styled.div`
   width: 1920px;
@@ -27,8 +28,6 @@ const MainImg = styled.div`
 
 const MainText = styled.h1`
   color: #00427e;
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 53px;
@@ -53,9 +52,6 @@ const SubContainer = styled.div`
 const SubTextOne = styled.p`
   width: 100%;
   height: 120px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
   font-size: 24px;
   color: #01656b;
   line-height: 49px;
@@ -72,9 +68,6 @@ const SubImgOne = styled.div`
 const InstroductionOne = styled.p`
   padding-left: 40px;
   width: 600px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 49px;
   text-align: left;
@@ -84,9 +77,6 @@ const InstroductionOne = styled.p`
 const SubTextTwo = styled.p`
   width: 100%;
   height: 120px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
   font-size: 24px;
   color: #005ea3;
   line-height: 49px;
@@ -104,9 +94,6 @@ const SubImgTwo = styled.div`
 const InstroductionTwo = styled.p`
   padding-right: 40px;
   width: 600px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 49px;
   text-align: right;
@@ -115,6 +102,7 @@ const InstroductionTwo = styled.p`
 
 const SelectType = styled.div`
   margin-top: 240px;
+  margin-bottom: 300px;
   width: 1200px;
   height: 600px;
   display: flex;
@@ -124,8 +112,6 @@ const SelectType = styled.div`
 
 const SubTextThree = styled.p`
   height: 90px;
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 30px;
@@ -168,15 +154,35 @@ const SellerImg = styled.div`
 `;
 
 const Text = styled.p`
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 80px;
   color: #00427e;
 `;
 
+const GoSignUp = styled.button`
+  width: 400px;
+  margin: 50px 0px;
+  border: 0;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background: #2347a3;
+  border: none;
+  :focus {
+    outline: none;
+  }
+  :hover {
+    opacity: 0.8;
+  }
+`;
+
 function HomePage() {
+  const history = useHistory();
+
   return (
     <Layout>
       <Container className="Container">
@@ -233,6 +239,9 @@ function HomePage() {
               <Text>Seller</Text>
             </TypeImage>
           </TypeContainer>
+          <GoSignUp onClick={() => history.push('/signUp')}>
+            함께하러가기
+          </GoSignUp>
         </SelectType>
       </Container>
     </Layout>
