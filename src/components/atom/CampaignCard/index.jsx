@@ -13,9 +13,12 @@ const CardWrap = styled.div`
   margin: 10px 10px;
   cursor: pointer;
   padding: 4px;
+  :hover {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
 `;
 
-const CampaignCard = ({ id, titleImg, name }) => {
+const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
   const history = useHistory();
 
   const Img = styled.div`
@@ -27,13 +30,26 @@ const CampaignCard = ({ id, titleImg, name }) => {
     background-position: center center;
   `;
 
+  const Text = styled.p`
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 25px;
+  `;
+
+  const rate = ((currentMoney / destMoney) * 100).toFixed(0);
+
   return (
     <CardWrap
       className="CampaignCard"
       onClick={() => history.push(`/campaign/:${id}`)}
     >
       <Img />
-      <div>{name}</div>
+      <div>
+        <progress value={rate} max={100} label={rate} />
+        <b> {rate}%</b>
+      </div>
+
+      <Text>{name}</Text>
     </CardWrap>
   );
 };
@@ -42,6 +58,8 @@ CampaignCard.propTypes = {
   id: PropTypes.number.isRequired,
   titleImg: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  destMoney: PropTypes.number.isRequired,
+  currentMoney: PropTypes.number.isRequired,
 };
 
 export default CampaignCard;
