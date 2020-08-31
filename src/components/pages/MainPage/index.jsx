@@ -28,6 +28,8 @@ function MainPage() {
           key={campaign.id}
           titleImg={campaign.title_img}
           name={campaign.name}
+          destMoney={campaign.campaign.dest_money}
+          currentMoney={campaign.campaign.current_money}
         />
       ))}
     </Layout>
