@@ -11,16 +11,37 @@ function CharityDashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get('/campaign/myCampaigns/ing').then(rsp => {
-      SetIngCampaignArr(rsp.data.data);
-    });
-    axios.get('/campaign/myCampaigns/end').then(rsp => {
-      SetEndCampaignArr(rsp.data.data);
-    });
-    axios.get('/tradeLog/myOrders').then(rsp => {
-      console.log(rsp.data.data);
-      SetPurchaseArr(rsp.data.data);
-    });
+    const fetchData = async () => {
+      await axios
+        .get('/campaign/myCampaigns/ing')
+        .then(rsp => {
+          console.log(rsp);
+          SetIngCampaignArr(rsp.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+      await axios
+        .get('/campaign/myCampaigns/end')
+        .then(rsp => {
+          console.log(rsp);
+          SetEndCampaignArr(rsp.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+      await axios
+        .get('/tradeLog/myOrders')
+        .then(rsp => {
+          console.log(rsp);
+          SetPurchaseArr(rsp.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -42,9 +63,9 @@ function CharityDashboard() {
           {ingCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
@@ -53,9 +74,9 @@ function CharityDashboard() {
           {endCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
