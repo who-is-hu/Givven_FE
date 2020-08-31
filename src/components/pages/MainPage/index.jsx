@@ -7,9 +7,17 @@ function MainPage() {
   const [campaignArr, SetCampaignArr] = useState([]);
 
   useEffect(() => {
-    axios.get('/campaign/campaigns/ing').then(rsp => {
-      SetCampaignArr(rsp.data);
-    });
+    const fetchData = async () => {
+      await axios
+        .get('/campaign/campaigns/ing')
+        .then(rsp => {
+          SetCampaignArr(rsp.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+    };
+    fetchData();
   }, []);
 
   return (
