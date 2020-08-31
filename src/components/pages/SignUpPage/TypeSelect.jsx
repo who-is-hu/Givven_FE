@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 
 import Logo from 'assets/logo.PNG';
 
-const Drawer = styled.div`
+const Dimmer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  transition: all 500ms ease-in-out;
-  max-height: ${props => (props.selected ? 0 : '90vh')};
   height: 90vh;
   z-index: 4;
 `;
@@ -62,9 +59,9 @@ const TypeCardWrapper = styled.div`
       margin-right: 16px;
   }
 `;
-const TypeSelect = ({ selected, setUserType }) => {
+const TypeSelect = ({ setUserType }) => {
   return (
-    <Drawer selected={selected}>
+    <Dimmer>
       <Title>Sign up</Title>
       <Subs>어떤 목적으로 오셨나요?</Subs>
       <TypeCardWrapper>
@@ -81,12 +78,11 @@ const TypeSelect = ({ selected, setUserType }) => {
           <p>판매자</p>
         </TypeCardBox>
       </TypeCardWrapper>
-    </Drawer>
+    </Dimmer>
   );
 };
 
 TypeSelect.propTypes = {
-  selected: PropTypes.bool.isRequired,
   setUserType: PropTypes.func.isRequired,
 };
 

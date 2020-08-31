@@ -17,7 +17,7 @@ const Container = styled.div`
 `;
 
 const Form = styled.div`
-  display: ${props => (props.selected ? 'flex' : 'none')};
+  display: flex;
   flex-direction: column;
   width: 400px;
 `;
@@ -139,58 +139,60 @@ function SignUpPage() {
 
   return (
     <Layout>
-      <TypeSelect
-        selected={selected}
-        setUserType={type => {
-          setForm({
-            ...form,
-            userType: type,
-          });
-          setSelected(true);
-        }}
-      />
       <Container>
-        <Form selected={selected}>
-          <Title>Sign Up</Title>
-          <Subs>
-            <span>{convert[form.userType]}</span> 계정을 생성합니다.
-          </Subs>
-          <StyledInput
-            type="text"
-            name="email"
-            id="userId"
-            onChange={e => onChangeInputs(e)}
-            placeholder="이메일"
+        {!selected ? (
+          <TypeSelect
+            setUserType={type => {
+              setForm({
+                ...form,
+                userType: type,
+              });
+              setSelected(true);
+            }}
           />
-          <StyledInput
-            type="text"
-            name="name"
-            id="userName"
-            onChange={e => onChangeInputs(e)}
-            placeholder="이름"
-          />
+        ) : (
+          <Form>
+            <Title>Sign Up</Title>
+            <Subs>
+              <span>{convert[form.userType]}</span> 계정을 생성합니다.
+            </Subs>
+            <StyledInput
+              type="text"
+              name="email"
+              id="userId"
+              onChange={e => onChangeInputs(e)}
+              placeholder="이메일"
+            />
+            <StyledInput
+              type="text"
+              name="name"
+              id="userName"
+              onChange={e => onChangeInputs(e)}
+              placeholder="이름"
+            />
 
-          <StyledInput
-            type="password"
-            name="password"
-            id="password"
-            onChange={e => onChangeInputs(e)}
-            placeholder="비밀번호"
-          />
-          <StyledInput
-            type="password"
-            name="confirm"
-            id="confirm"
-            onChange={e => onChangeInputs(e)}
-            placeholder="비밀번호 확인"
-          />
-          <StyledButton type="submit" onClick={() => onSubmit()}>
-            Sign Up
-          </StyledButton>
-          <GoBackButton type="button" onClick={() => setSelected(false)}>
-            뒤로가기
-          </GoBackButton>
-        </Form>
+            <StyledInput
+              type="password"
+              name="password"
+              id="password"
+              onChange={e => onChangeInputs(e)}
+              placeholder="비밀번호"
+            />
+            <StyledInput
+              type="password"
+              name="confirm"
+              id="confirm"
+              onChange={e => onChangeInputs(e)}
+              placeholder="비밀번호 확인"
+            />
+            <StyledButton type="submit" onClick={() => onSubmit()}>
+              Sign Up
+            </StyledButton>
+            <GoBackButton type="button" onClick={() => setSelected(false)}>
+              뒤로가기
+            </GoBackButton>
+          </Form>
+        )}
       </Container>
     </Layout>
   );
