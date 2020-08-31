@@ -11,16 +11,37 @@ function CharityDashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    axios.get('/campaign/myCampaigns/ing').then(rsp => {
-      SetIngCampaignArr(rsp.data.data);
-    });
-    axios.get('/campaign/myCampaigns/end').then(rsp => {
-      SetEndCampaignArr(rsp.data.data);
-    });
-    axios.get('/tradeLog/myOrders').then(rsp => {
-      console.log(rsp.data.data);
-      SetPurchaseArr(rsp.data.data);
-    });
+    async function fetchData() {
+      await axios
+        .get('/campaign/myCampaigns/ing')
+        .then(rsp => {
+          console.log(rsp);
+          SetIngCampaignArr(rsp.data.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+      await axios
+        .get('/campaign/myCampaigns/end')
+        .then(rsp => {
+          console.log(rsp);
+          SetEndCampaignArr(rsp.data.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+      await axios
+        .get('/tradeLog/myOrders')
+        .then(rsp => {
+          console.log(rsp);
+          console.log(rsp.data.data);
+          SetPurchaseArr(rsp.data.data);
+        })
+        .catch(error => {
+          console.log(error.response);
+        });
+    }
+    fetchData();
   }, []);
 
   return (
