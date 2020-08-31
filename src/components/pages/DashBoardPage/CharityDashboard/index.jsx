@@ -11,12 +11,12 @@ function CharityDashboard() {
   const history = useHistory();
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       await axios
         .get('/campaign/myCampaigns/ing')
         .then(rsp => {
           console.log(rsp);
-          SetIngCampaignArr(rsp.data.data);
+          SetIngCampaignArr(rsp.data);
         })
         .catch(error => {
           console.log(error.response);
@@ -25,7 +25,7 @@ function CharityDashboard() {
         .get('/campaign/myCampaigns/end')
         .then(rsp => {
           console.log(rsp);
-          SetEndCampaignArr(rsp.data.data);
+          SetEndCampaignArr(rsp.data);
         })
         .catch(error => {
           console.log(error.response);
@@ -34,13 +34,13 @@ function CharityDashboard() {
         .get('/tradeLog/myOrders')
         .then(rsp => {
           console.log(rsp);
-          console.log(rsp.data.data);
-          SetPurchaseArr(rsp.data.data);
+          SetPurchaseArr(rsp.data);
         })
         .catch(error => {
           console.log(error.response);
         });
-    }
+    };
+
     fetchData();
   }, []);
 
@@ -63,9 +63,9 @@ function CharityDashboard() {
           {ingCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
@@ -74,9 +74,9 @@ function CharityDashboard() {
           {endCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
             />
           ))}
         </div>
