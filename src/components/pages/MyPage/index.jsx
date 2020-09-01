@@ -80,10 +80,11 @@ const SectionTitle = styled.h3`
 `;
 const CampaignList = styled.div`
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
   gap: 32px;
-  max-height: ${props => (props.drawer ? '9999px' : '220px')};
+  max-height: ${props => (props.drawer ? '9999px' : '270px')};
   overflow: hidden;
   transition: all 600ms ease;
 `;
@@ -218,6 +219,8 @@ function NormalMyPage() {
                       id={campaign.id}
                       titleImg={campaign.title_img}
                       name={campaign.name}
+                      destMoney={campaign.dest_money}
+                      currentMoney={campaign.current_money}
                     />
                   ))()
               )}
@@ -241,6 +244,8 @@ function NormalMyPage() {
                     id={campaign.id}
                     titleImg={campaign.title_img}
                     name={campaign.name}
+                    destMoney={campaign.dest_money}
+                    currentMoney={campaign.current_money}
                   />
                 ))
               )}
