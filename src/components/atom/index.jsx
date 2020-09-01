@@ -5,6 +5,7 @@ import PurchaseCard from './PurchaseCard';
 import SpinnerScreen from './SpinnerScreen';
 import CampaignCard from './CampaignCard';
 import Modal from './Modal';
+import Container from './Container';
 
 export {
   HeaderNav,
@@ -14,4 +15,5 @@ export {
   SpinnerScreen,
   CampaignCard,
   Modal,
+  Container,
 };

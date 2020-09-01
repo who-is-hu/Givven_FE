@@ -75,6 +75,7 @@ const IconWrapper = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+  cursor: pointer;
 `;
 
 const Contents = styled.div`
@@ -94,8 +95,8 @@ const StyledButton = styled.a`
   border: none;
   border-radius: 4px;
   margin-left: 10px;
-  background-color: ${props => (props.filled ? '#ffc847' : '#edf0f3')};
-  color: ${props => (props.filled ? '#232527' : '#8c9094')};
+  background-color: ${props => (props.filled ? '#00427E' : '#edf0f3')};
+  color: ${props => (props.filled ? '#fff' : '#8c9094')};
   font-size: 0.875rem;
   cursor: pointer;
 `;
@@ -124,7 +125,7 @@ const Modal = ({
               <Title>{title}</Title>
               <SubTitle>{description}</SubTitle>
             </TitleWrapper>
-            <IconWrapper onClick={onCloseClick}>close</IconWrapper>
+            <IconWrapper onClick={onCloseClick}>X</IconWrapper>
           </ModalHeader>
         )}
         <Contents>{children}</Contents>

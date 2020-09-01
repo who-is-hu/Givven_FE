@@ -18,7 +18,11 @@ body{
   a{
   text-decoration: none;
   color:inherit;
-}
+  }
+
+  h1,h2,h3,h4 {
+    display: block;
+  }
 }
 `;
 
