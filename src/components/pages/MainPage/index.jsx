@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Layout from 'components/layout';
 import axios from 'axios';
 import { CampaignCard } from 'components/atom';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function MainPage() {
   const [campaignArr, SetCampaignArr] = useState([]);
