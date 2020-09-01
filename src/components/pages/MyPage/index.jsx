@@ -130,8 +130,8 @@ const StyledInput = styled.input`
 `;
 
 function NormalMyPage() {
-  const [ingCampaignArr, SetIngCampaignArr] = useState([]);
-  const [endCampaignArr, SetEndCampaignArr] = useState([]);
+  const [ingDonations, setIngDonations] = useState([]);
+  const [endDonations, setEndDonations] = useState([]);
   const [myPoint, SetMyPoint] = useState();
   const [drawer, setDrawer] = useState({
     drawer1: false,
@@ -145,12 +145,12 @@ function NormalMyPage() {
   const loading = useSelector(state => state.shared.loading);
 
   const getMyDonationMoney = () => {
-    const ingTotal = ingCampaignArr.reduce(
-      (total, campaign) => total + campaign.value,
+    const ingTotal = ingDonations.reduce(
+      (total, donation) => total + donation.value,
       0,
     );
-    const endTotal = endCampaignArr.reduce(
-      (total, campaign) => total + campaign.value,
+    const endTotal = endDonations.reduce(
+      (total, donation) => total + donation.value,
       0,
     );
     return ingTotal + endTotal;
@@ -160,11 +160,11 @@ function NormalMyPage() {
     const fetchData = async () => {
       await axios.get('/tradeLog/myDonations/ing').then(rsp => {
         console.log(rsp);
-        SetIngCampaignArr(rsp.data);
+        setIngDonations(rsp.data);
       });
       await axios.get('/tradeLog/myDonations/end').then(rsp => {
         console.log(rsp);
-        SetEndCampaignArr(rsp.data);
+        setEndDonations(rsp.data);
       });
       await axios.get('/point').then(rsp => {
         console.log(rsp);
@@ -208,13 +208,13 @@ function NormalMyPage() {
               더보기 {drawer.drawer1 ? '-' : '+'}
             </OpenButton>
             <CampaignList drawer={drawer.drawer1}>
-              {ingCampaignArr.length === 0 ? (
+              {ingDonations.length === 0 ? (
                 <NoneNotice>캠페인이 없습니다.</NoneNotice>
               ) : (
                 () =>
-                  ingCampaignArr.map(campaign => (
+                  ingDonations.map(({ campaign, ...rest }) => (
                     <CampaignCard
-                      key={campaign.id}
+                      key={rest.id}
                       id={campaign.id}
                       titleImg={campaign.title_img}
                       name={campaign.name}
@@ -232,12 +232,12 @@ function NormalMyPage() {
             </OpenButton>
 
             <CampaignList drawer={drawer.drawer2}>
-              {endCampaignArr.length === 0 ? (
+              {endDonations.length === 0 ? (
                 <NoneNotice>캠페인이 없습니다.</NoneNotice>
               ) : (
-                endCampaignArr.map(campaign => (
+                endDonations.map(({ campaign, ...rest }) => (
                   <CampaignCard
-                    key={campaign.id}
+                    key={rest.id}
                     id={campaign.id}
                     titleImg={campaign.title_img}
                     name={campaign.name}
@@ -268,10 +268,14 @@ function NormalMyPage() {
                   })
                   .then(rsp => {
                     console.log(rsp);
+                    alert('충전 완료');
+                    setModal(false);
+                    setWillChargePoint(0);
                     dispatch({ type: 'SET_LOADING', loading: false });
                   })
                   .catch(err => {
                     console.log(err.response);
+                    alert('충전 실패');
                     dispatch({ type: 'SET_LOADING', loading: false });
                   });
               } else alert('금액을 입력해 주세요');
@@ -286,7 +290,6 @@ function NormalMyPage() {
             name="point"
             placeholder="금액을 입력해주세요"
             onChange={e => setWillChargePoint(e.target.value)}
-            // value={willChargePoint}
           />
         </ModalContentContainer>
       </Modal>
