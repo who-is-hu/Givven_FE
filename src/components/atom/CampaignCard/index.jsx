@@ -41,7 +41,7 @@ const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
   return (
     <CardWrap
       className="CampaignCard"
-      onClick={() => history.push(`/campaign/:${id}`)}
+      onClick={() => history.push(`/campaign/${id}`)}
     >
       <Img />
       <div>

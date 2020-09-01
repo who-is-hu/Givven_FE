@@ -63,11 +63,11 @@ function CharityDashboard() {
           {ingCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
-              destMoney={campaign.campaign.dest_money}
-              currentMoney={campaign.campaign.current_money}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
+              destMoney={campaign.dest_money}
+              currentMoney={campaign.current_money}
             />
           ))}
         </div>
@@ -76,11 +76,11 @@ function CharityDashboard() {
           {endCampaignArr.map(campaign => (
             <CampaignCard
               key={campaign.id}
-              id={campaign.campaign.id}
-              titleImg={campaign.campaign.title_img}
-              name={campaign.campaign.name}
-              destMoney={campaign.campaign.dest_money}
-              currentMoney={campaign.campaign.current_money}
+              id={campaign.id}
+              titleImg={campaign.title_img}
+              name={campaign.name}
+              destMoney={campaign.dest_money}
+              currentMoney={campaign.current_money}
             />
           ))}
         </div>

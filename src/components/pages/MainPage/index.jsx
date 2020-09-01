@@ -11,6 +11,7 @@ function MainPage() {
       await axios
         .get('/campaign/campaigns/ing')
         .then(rsp => {
+          console.log(rsp.data);
           SetCampaignArr(rsp.data);
         })
         .catch(err => {
@@ -26,10 +27,11 @@ function MainPage() {
       {campaignArr.map(campaign => (
         <CampaignCard
           key={campaign.id}
+          id={campaign.id}
           titleImg={campaign.title_img}
           name={campaign.name}
-          destMoney={campaign.campaign.dest_money}
-          currentMoney={campaign.campaign.current_money}
+          destMoney={campaign.dest_money}
+          currentMoney={campaign.current_money}
         />
       ))}
     </Layout>
