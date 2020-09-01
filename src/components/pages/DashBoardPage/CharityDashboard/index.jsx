@@ -66,6 +66,8 @@ function CharityDashboard() {
               id={campaign.id}
               titleImg={campaign.title_img}
               name={campaign.name}
+              destMoney={campaign.dest_money}
+              currentMoney={campaign.current_money}
             />
           ))}
         </div>
@@ -77,6 +79,8 @@ function CharityDashboard() {
               id={campaign.id}
               titleImg={campaign.title_img}
               name={campaign.name}
+              destMoney={campaign.dest_money}
+              currentMoney={campaign.current_money}
             />
           ))}
         </div>
