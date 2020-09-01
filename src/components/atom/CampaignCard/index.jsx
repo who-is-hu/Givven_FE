@@ -13,9 +13,6 @@ const CardWrap = styled.div`
   margin: 10px 10px;
   cursor: pointer;
   padding: 4px;
-  :hover {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
 `;
 
 const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
@@ -25,7 +22,7 @@ const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
     width: 272px;
     height: 292px;
     background-image: url('${titleImg}');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   `;
