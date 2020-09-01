@@ -8,19 +8,27 @@ const CardWrap = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 4px;
-  width: 280px;
-  height: 300px;
-  margin: 10px 10px;
+  width: 206px;
+  min-width: 206px;
+  height: 260px;
+  min-height: 260px;
+
   cursor: pointer;
   padding: 4px;
+`;
+
+const ProgressBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
   const history = useHistory();
 
   const Img = styled.div`
-    width: 272px;
-    height: 292px;
+    width: 100%;
+    height: 230px;
     background-image: url('${titleImg}');
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,10 +49,10 @@ const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
       onClick={() => history.push(`/campaign/${id}`)}
     >
       <Img />
-      <div>
+      <ProgressBox>
         <progress value={rate} max={100} label={rate} />
-        <b> {rate}%</b>
-      </div>
+        <b>{rate}%</b>
+      </ProgressBox>
 
       <Text>{name}</Text>
     </CardWrap>
