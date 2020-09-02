@@ -22,24 +22,23 @@ const ProgressBox = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
-  const history = useHistory();
-
-  const Img = styled.div`
+const Img = styled.div`
     width: 100%;
     height: 230px;
-    background-image: url('${titleImg}');
+    background-image: url('${props => props.titleImg}');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   `;
 
-  const Text = styled.p`
-    font-weight: 550;
-    font-size: 14px;
-    line-height: 25px;
-  `;
+const Text = styled.p`
+  font-weight: 550;
+  font-size: 14px;
+  line-height: 25px;
+`;
+
+const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
+  const history = useHistory();
 
   const rate = ((currentMoney / destMoney) * 100).toFixed(0);
 
@@ -48,7 +47,7 @@ const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
       className="CampaignCard"
       onClick={() => history.push(`/campaign/${id}`)}
     >
-      <Img />
+      <Img titleImg={titleImg} />
       <ProgressBox>
         <progress value={rate} max={100} label={rate} />
         <b>{rate}%</b>
