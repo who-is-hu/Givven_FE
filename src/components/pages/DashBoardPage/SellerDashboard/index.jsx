@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
-import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/atom';
+import { ItemCard, Container, Modal, SpinnerScreen } from 'components/atom';
 import ChangePointContent from './ChangePointModalContent';
 
 const Title = styled.h1`
@@ -288,14 +288,13 @@ function SellerDashboard() {
                 <NoneNotice>상품이 없습니다.</NoneNotice>
               ) : (
                 () =>
-                  items.map(campaign => (
-                    <CampaignCard
-                      key={campaign.id}
-                      id={campaign.id}
-                      titleImg={campaign.title_img}
-                      name={campaign.name}
-                      destMoney={campaign.dest_money}
-                      currentMoney={campaign.current_money}
+                  items.map(item => (
+                    <ItemCard
+                      key={item.id}
+                      id={item.id}
+                      titleImg={item.title_img}
+                      name={item.name}
+                      price={item.price}
                     />
                   ))()
               )}
