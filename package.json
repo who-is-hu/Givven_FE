@@ -12,6 +12,7 @@
     "prop-types": "^15.7.2",
     "prpo-types": "0.0.1-security",
     "react": "^16.13.1",
+    "react-daum-postcode": "^1.9.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.5.0",
     "react-md-spinner": "^1.0.0",
