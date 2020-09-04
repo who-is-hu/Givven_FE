@@ -25,8 +25,8 @@ const ItemBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  width: 100%;
+  margin-top: 100px;
+  width: 70%;
   & > img {
     display: block;
     width: 415px;
@@ -125,12 +125,18 @@ const SectionTitle = styled.h2`
   margin-top: 40px;
 `;
 
+const CamapignSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+`;
 const CampaignList = styled.div`
   display: grid;
   width: 100%;
+
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
-  gap: 32px;
+  gap: 16px;
   max-height: ${props => (props.drawer ? '9999px' : '300px')};
   overflow: hidden;
   transition: all 600ms ease;
@@ -152,7 +158,7 @@ const PurchaseBtn = styled.button`
   width: 300px;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-top: 40px;
+  margin-top: 80px;
   cursor: pointer;
   :focus {
     outline: none;
@@ -240,41 +246,45 @@ function PurchasePage() {
               <Button onClick={() => setModal(true)}>주소 찾기</Button>
             </ItemInfo>
           </ItemBox>
-          <SectionTitle>결제할 캠페인</SectionTitle>
-          <CampaignList>
-            {campaigns.length === 0 ? (
-              <NoneNotice />
-            ) : (
-              campaigns.map(campaign => (
-                <CardWrapper
-                  key={campaign.id}
-                  selected={campaign.id === selectedCampaign}
-                  onClick={() => {
-                    setSelectedCampaign(campaign.id);
-                  }}
-                >
-                  <CampaignCard
-                    id={campaign.id}
-                    name={campaign.name}
-                    titleImg={campaign.title_img}
-                    destMoney={campaign.dest_money}
-                    currentMoney={campaign.current_money}
-                    offOnClick
+          <CamapignSection>
+            <SectionTitle>결제할 캠페인</SectionTitle>
+            <CampaignList>
+              {campaigns.length === 0 ? (
+                <NoneNotice />
+              ) : (
+                campaigns.map(campaign => (
+                  <CardWrapper
+                    key={campaign.id}
+                    selected={campaign.id === selectedCampaign}
                     onClick={() => {
                       setSelectedCampaign(campaign.id);
                     }}
-                  />
-                  <p>남은 금액: {commaNumber(campaign.current_money)}</p>
-                  <p>
-                    결제 후 금액:
-                    <span>
-                      {commaNumber(campaign.current_money - item.price * count)}
-                    </span>
-                  </p>
-                </CardWrapper>
-              ))
-            )}
-          </CampaignList>
+                  >
+                    <CampaignCard
+                      id={campaign.id}
+                      name={campaign.name}
+                      titleImg={campaign.title_img}
+                      destMoney={campaign.dest_money}
+                      currentMoney={campaign.current_money}
+                      offOnClick
+                      onClick={() => {
+                        setSelectedCampaign(campaign.id);
+                      }}
+                    />
+                    <p>남은 금액: {commaNumber(campaign.current_money)}</p>
+                    <p>
+                      결제 후 금액:
+                      <span>
+                        {commaNumber(
+                          campaign.current_money - item.price * count,
+                        )}
+                      </span>
+                    </p>
+                  </CardWrapper>
+                ))
+              )}
+            </CampaignList>
+          </CamapignSection>
           <PurchaseBtn
             onClick={async () => {
               dispatch({ type: 'SET_LOADING', loading: true });
