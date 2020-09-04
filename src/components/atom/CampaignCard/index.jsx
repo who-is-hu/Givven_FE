@@ -37,7 +37,15 @@ const Text = styled.p`
   line-height: 25px;
 `;
 
-const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
+const CampaignCard = ({
+  id,
+  titleImg,
+  name,
+  destMoney,
+  currentMoney,
+  onClick,
+  offOnClick,
+}) => {
   const history = useHistory();
 
   const rate = ((currentMoney / destMoney) * 100).toFixed(0);
@@ -45,7 +53,7 @@ const CampaignCard = ({ id, titleImg, name, destMoney, currentMoney }) => {
   return (
     <CardWrap
       className="CampaignCard"
-      onClick={() => history.push(`/campaign/${id}`)}
+      onClick={offOnClick ? onClick : () => history.push(`/campaign/${id}`)}
     >
       <Img titleImg={titleImg} />
       <ProgressBox>
@@ -64,6 +72,13 @@ CampaignCard.propTypes = {
   name: PropTypes.string.isRequired,
   destMoney: PropTypes.number.isRequired,
   currentMoney: PropTypes.number.isRequired,
+  offOnClick: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+CampaignCard.defaultProps = {
+  offOnClick: false,
+  onClick: () => {},
 };
 
 export default CampaignCard;
