@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
+import commaNumber from 'comma-number';
+
 const CardWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,7 +45,7 @@ const ItemCard = ({ id, titleImg, name, price }) => {
     >
       <Img titleImg={titleImg} />
       <Text>상품명 : {name}</Text>
-      <Text>가격 : {price}</Text>
+      <Text>가격 : {commaNumber(price)}원</Text>
     </CardWrap>
   );
 };
