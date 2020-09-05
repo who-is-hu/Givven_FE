@@ -8,7 +8,7 @@ import store from './store';
 import App from './App';
 
 if (process.env.NODE_ENV === 'production')
-  axios.defaults.baseURL = 'http://localhost:8080';
+  axios.defaults.baseURL = 'http://127.0.0.1/api';
 
 const persistor = persistStore(store);
 
