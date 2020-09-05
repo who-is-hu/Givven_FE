@@ -19,7 +19,7 @@ const Wrapper = styled.nav`
   padding: 16px 32px 0px;
   z-index: 99;
   background-color: white;
-  border-bottom: solid 4px #b7ceb1;
+  border-bottom: solid 4px rgba(183, 206, 177, 0.55);
 `;
 const LogoWrapper = styled.div`
   display: flex;
