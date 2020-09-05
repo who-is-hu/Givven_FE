@@ -19,6 +19,7 @@ const Wrapper = styled.nav`
   padding: 16px 32px;
   z-index: 99;
   background-color: white;
+  border-bottom: solid 4px #b7ceb1;
 `;
 const LogoWrapper = styled.div`
   display: flex;
@@ -36,7 +37,9 @@ const LogoBox = styled.div`
   background-repeat: no-repeat;
 `;
 const Word = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.3125rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
   color: #003d85;
 `;
 
@@ -51,9 +54,7 @@ const Menu = styled.li`
   cursor: pointer;
   transition: all 300ms ease;
 
-  :hover {
-    background-color: #cef5ff;
-  }
+  border-bottom: ${props => (props.underBar ? 'solid 4px #ff6d6f' : '0')};
 `;
 
 const Nav = styled.ul`
@@ -75,15 +76,41 @@ const AuthNav = styled(Nav)`
   margin-top: 16px;
 `;
 
-const HeaderNav = () => {
+const HeaderNav = ({ current, setCurrent }) => {
   const user = useSelector(state => state.auth.user);
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const IsCurrent = (Idx, curIdx) => {
+    return Idx === curIdx;
+  };
+
   const createElementByUserType = () => {
     if (user.type === 'normal')
-      return <Menu onClick={() => history.push('/myPage')}>MY PAGE</Menu>;
-    return <Menu onClick={() => history.push(`/dashboard`)}>DASHBOARD </Menu>;
+      return (
+        <Menu
+          onClick={() => {
+            history.push('/myPage');
+            setCurrent(3);
+            console.log(current);
+          }}
+          underBar={IsCurrent(3, current)}
+        >
+          MY PAGE
+        </Menu>
+      );
+    return (
+      <Menu
+        onClick={() => {
+          history.push(`/dashboard`);
+          setCurrent(3);
+          console.log(current);
+        }}
+        underBar={IsCurrent(3, current)}
+      >
+        DASHBOARD{' '}
+      </Menu>
+    );
   };
 
   const logout = async () => {
@@ -95,17 +122,36 @@ const HeaderNav = () => {
       });
     dispatch({ type: 'SET_USER', user: null });
   };
+
   return (
     <Wrapper>
       <LogoWrapper>
         <LogoBox onClick={() => history.push('/')}>
           {/* <img src={Logo} alt="logo.png" /> */}
         </LogoBox>
-        <Word>문구문구 저스트 두잇!</Word>
+        <Word>GIVE + 기쁨 = GIVVEN</Word>
       </LogoWrapper>
       <MenuNav>
-        <Menu onClick={() => history.push('/main')}>CAMPAIGN</Menu>
-        <Menu onClick={() => history.push('/market')}>SHOP</Menu>
+        <Menu
+          onClick={() => {
+            history.push('/main');
+            setCurrent(1);
+            console.log(current);
+          }}
+          underBar={IsCurrent(1, current)}
+        >
+          CAMPAIGN
+        </Menu>
+        <Menu
+          onClick={() => {
+            history.push('/market');
+            setCurrent(2);
+            console.log(current);
+          }}
+          underBar={IsCurrent(2, current)}
+        >
+          SHOP
+        </Menu>
         {user && createElementByUserType()}
       </MenuNav>
       <AuthNav>
