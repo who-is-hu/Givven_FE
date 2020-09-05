@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
@@ -18,11 +18,9 @@ const Content = styled.main`
   padding: ${props => props.padding};
 `;
 const Layout = ({ padding, children }) => {
-  const [current, setCurrent] = useState(0);
-
   return (
     <Wrapper>
-      <HeaderNav current={current} setCurrent={setCurrent} />
+      <HeaderNav />
       <Content padding={padding}>{children}</Content>
     </Wrapper>
   );

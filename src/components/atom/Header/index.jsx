@@ -16,7 +16,7 @@ const Wrapper = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
-  padding: 16px 32px;
+  padding: 16px 32px 0px;
   z-index: 99;
   background-color: white;
   border-bottom: solid 4px #b7ceb1;
@@ -50,11 +50,12 @@ const Menu = styled.li`
   font-weight: 500;
   font-size: 1.2rem;
   color: #18a0fb;
-  padding: 0 36px;
+  padding: 0 36px 13px;
   cursor: pointer;
   transition: all 300ms ease;
-
-  border-bottom: ${props => (props.underBar ? 'solid 4px #ff6d6f' : '0')};
+  border-bottom: ${props => (props.underBar ? 'solid 6px #74BBC2' : '0')};
+  position: relative;
+  top: 4px;
 `;
 
 const Nav = styled.ul`
@@ -76,14 +77,20 @@ const AuthNav = styled(Nav)`
   margin-top: 16px;
 `;
 
-const HeaderNav = ({ current, setCurrent }) => {
+const HeaderNav = () => {
   const user = useSelector(state => state.auth.user);
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const IsCurrent = (Idx, curIdx) => {
-    return Idx === curIdx;
-  };
+  const pathName = history.location.pathname;
+  let curIdx;
+  if (pathName === '/myPage' || pathName === '/dashboard') {
+    curIdx = 3;
+  } else if (pathName === '/main') {
+    curIdx = 1;
+  } else if (pathName === '/market') {
+    curIdx = 2;
+  }
 
   const createElementByUserType = () => {
     if (user.type === 'normal')
@@ -91,10 +98,8 @@ const HeaderNav = ({ current, setCurrent }) => {
         <Menu
           onClick={() => {
             history.push('/myPage');
-            setCurrent(3);
-            console.log(current);
           }}
-          underBar={IsCurrent(3, current)}
+          underBar={curIdx === 3}
         >
           MY PAGE
         </Menu>
@@ -103,10 +108,8 @@ const HeaderNav = ({ current, setCurrent }) => {
       <Menu
         onClick={() => {
           history.push(`/dashboard`);
-          setCurrent(3);
-          console.log(current);
         }}
-        underBar={IsCurrent(3, current)}
+        underBar={curIdx === 3}
       >
         DASHBOARD{' '}
       </Menu>
@@ -135,20 +138,16 @@ const HeaderNav = ({ current, setCurrent }) => {
         <Menu
           onClick={() => {
             history.push('/main');
-            setCurrent(1);
-            console.log(current);
           }}
-          underBar={IsCurrent(1, current)}
+          underBar={curIdx === 1}
         >
           CAMPAIGN
         </Menu>
         <Menu
           onClick={() => {
             history.push('/market');
-            setCurrent(2);
-            console.log(current);
           }}
-          underBar={IsCurrent(2, current)}
+          underBar={curIdx === 2}
         >
           SHOP
         </Menu>
