@@ -6,6 +6,7 @@ import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
 import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/atom';
+import BuyPointModalContent from './BuyPointModalContent';
 
 const Title = styled.h1`
   display: block;
@@ -281,6 +282,8 @@ function NormalMyPage() {
                   .catch(err => {
                     console.log(err.response);
                     alert('충전 실패');
+                    setModal(false);
+                    setWillChargePoint(0);
                     dispatch({ type: 'SET_LOADING', loading: false });
                   });
               } else alert('금액을 입력해 주세요');
@@ -289,12 +292,9 @@ function NormalMyPage() {
         ]}
       >
         <ModalContentContainer>
-          <p>얼마를 충전하실 건가요?</p>
-          <StyledInput
-            type="text"
-            name="point"
-            placeholder="금액을 입력해주세요"
-            onChange={e => setWillChargePoint(e.target.value)}
+          <BuyPointModalContent
+            setPoint={setWillChargePoint}
+            point={willChargePoint}
           />
         </ModalContentContainer>
       </Modal>
