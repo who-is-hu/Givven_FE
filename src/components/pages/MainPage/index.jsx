@@ -1,12 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Layout from 'components/layout';
 import axios from 'axios';
-import { CampaignCard } from 'components/atom';
+import PropTypes from 'prop-types';
+
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import Layout from 'components/layout';
+import { CampaignCard, Container } from 'components/atom';
 import IMG1 from 'assets/main.png';
 
 const StyledBanner = styled.div`
@@ -51,6 +54,48 @@ const BannerBtn = styled.div`
   color: #ff7a00;
 `;
 
+const Title = styled.h1`
+  display: block;
+  font-family: Roboto;
+  color: #ffb800;
+  font-size: 2.25rem;
+  margin-top: 40px;
+  align-self: flex-start;
+`;
+const SectionTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 80px;
+  display: flex;
+  color: #00408b;
+  align-self: flex-start;
+  margin-top: 80px;
+`;
+const CampaignList = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 32px;
+  max-height: ${props => (props.drawer ? '9999px' : '270px')};
+  overflow: hidden;
+  transition: all 600ms ease;
+`;
+const NoneNotice = styled.div`
+  margin: auto;
+  font-size: 1.2rem;
+  color: grey;
+`;
+
+const OpenButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  align-self: flex-end;
+  margin-bottom: 20px;
+  cursor: pointer;
+`;
+
 const Banner = ({ title, option, backgroundImg }) => {
   return (
     <StyledBanner backgroundImg={backgroundImg}>
@@ -61,8 +106,19 @@ const Banner = ({ title, option, backgroundImg }) => {
   );
 };
 
+Banner.propTypes = {
+  title: PropTypes.string.isRequired,
+  option: PropTypes.string.isRequired,
+  backgroundImg: PropTypes.string.isRequired,
+};
+
 function MainPage() {
-  const [campaignArr, SetCampaignArr] = useState([]);
+  const [ingCampaigns, setIngCampaigns] = useState([]);
+  const [endCampaigns, setEndCampaigns] = useState([]);
+  const [drawer, setDrawer] = useState({
+    drawer1: false,
+    drawer2: false,
+  });
   const settings = {
     infinite: false,
     speed: 500,
@@ -76,7 +132,17 @@ function MainPage() {
         .get('/campaign/campaigns/ing')
         .then(rsp => {
           console.log(rsp.data);
-          SetCampaignArr(rsp.data);
+          setIngCampaigns(rsp.data);
+        })
+        .catch(err => {
+          console.log(err.response);
+        });
+
+      await axios
+        .get('/campaign/campaigns/end')
+        .then(rsp => {
+          console.log(rsp);
+          setEndCampaigns(rsp.data);
         })
         .catch(err => {
           console.log(err.response);
@@ -87,22 +153,59 @@ function MainPage() {
 
   return (
     <Layout>
-      <div>메인페이지</div>
       <Slider {...settings}>
         <Banner title="캠페인1" option="~00월 00일까지" backgroundImg={IMG1} />
         <Banner title="캠페인2" backgroundImg={IMG1} />
         <Banner title="캠페인3" option="~00월 00일까지" backgroundImg={IMG1} />
       </Slider>
-      {campaignArr.map(campaign => (
-        <CampaignCard
-          key={campaign.id}
-          id={campaign.id}
-          titleImg={campaign.title_img}
-          name={campaign.name}
-          destMoney={campaign.dest_money}
-          currentMoney={campaign.current_money}
-        />
-      ))}
+      <Container>
+        <Title>CAMPAIGN</Title>
+
+        <SectionTitle>ON-GOING</SectionTitle>
+        <OpenButton
+          onClick={() => setDrawer({ ...drawer, drawer1: !drawer.drawer1 })}
+        >
+          더보기 {drawer.drawer1 ? '-' : '+'}
+        </OpenButton>
+        <CampaignList drawer={drawer.drawer1}>
+          {ingCampaigns.length === 0 ? (
+            <NoneNotice>캠페인이 없습니다.</NoneNotice>
+          ) : (
+            ingCampaigns.map(campaign => (
+              <CampaignCard
+                key={campaign.id}
+                id={campaign.id}
+                titleImg={campaign.title_img}
+                name={campaign.name}
+                destMoney={campaign.dest_money}
+                currentMoney={campaign.current_money}
+              />
+            ))
+          )}
+        </CampaignList>
+        <SectionTitle>CLOSE-OUT</SectionTitle>
+        <OpenButton
+          onClick={() => setDrawer({ ...drawer, drawer2: !drawer.drawer2 })}
+        >
+          더보기 {drawer.drawer2 ? '-' : '+'}
+        </OpenButton>
+        <CampaignList drawer={drawer.drawer2}>
+          {endCampaigns.length === 0 ? (
+            <NoneNotice>캠페인이 없습니다.</NoneNotice>
+          ) : (
+            endCampaigns.map(campaign => (
+              <CampaignCard
+                key={campaign.id}
+                id={campaign.id}
+                titleImg={campaign.title_img}
+                name={campaign.name}
+                destMoney={campaign.dest_money}
+                currentMoney={campaign.current_money}
+              />
+            ))
+          )}
+        </CampaignList>
+      </Container>
     </Layout>
   );
 }

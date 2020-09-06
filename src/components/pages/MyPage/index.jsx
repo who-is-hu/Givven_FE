@@ -115,22 +115,6 @@ const ModalContentContainer = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
-  border: none;
-  border-bottom: 1px solid grey;
-  outline: none;
-  width: 80%;
-  height: 40px;
-  margin-top: 12px;
-  font-size: 1rem;
-  font-weight: 400;
-
-  ::placeholder {
-    font-size: 1rem;
-    color: grey;
-  }
-`;
-
 function NormalMyPage() {
   const [ingDonations, setIngDonations] = useState([]);
   const [endDonations, setEndDonations] = useState([]);
