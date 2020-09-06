@@ -154,9 +154,21 @@ function MainPage() {
   return (
     <Layout>
       <Slider {...settings}>
-        <Banner title="캠페인1" option="~00월 00일까지" backgroundImg={IMG1} />
-        <Banner title="캠페인2" backgroundImg={IMG1} />
-        <Banner title="캠페인3" option="~00월 00일까지" backgroundImg={IMG1} />
+        {ingCampaigns === 0 ? (
+          <Banner
+            title="캠페인1"
+            option="~00월 00일까지"
+            backgroundImg={IMG1}
+          />
+        ) : (
+          ingCampaigns.map(campaign => (
+            <Banner
+              title={campaign.title}
+              option={campaign.due_day}
+              backgroundImg={campaign.title_img}
+            />
+          ))
+        )}
       </Slider>
       <Container>
         <Title>CAMPAIGN</Title>
