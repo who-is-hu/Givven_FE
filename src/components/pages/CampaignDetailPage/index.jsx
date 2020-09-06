@@ -303,7 +303,7 @@ function CampaignDetailPage() {
                       <td>{order.item.price * order.orderCount}</td>
                       <td>
                         <a
-                          href={`https://kovan.etherscan.io/tx/${order.transactionId}`}
+                          href={`https://rinkeby.etherscan.io/tx/${order.transactionId}`}
                           title={order.transactionId}
                         >
                           {order.transactionId.substr(0, 12)}...
