@@ -114,8 +114,8 @@ function SignUpPage() {
     dispatch({ type: 'SET_LOADING', loading: true });
     await axios
       .post('/auth/join', {
-        name: form.userName,
-        email: form.userId,
+        name: form.name,
+        email: form.email,
         password: form.password,
         type: form.userType,
       })
