@@ -23,10 +23,51 @@ import {
 } from 'components/pages';
 
 function Router() {
+  const routes = [
+    {
+      name : "route",
+      paths: [
+        {path: "/", component: HomePage},
+        {path: "/signIn", component: SignInPage},
+        {path: "/signUp", component: SignUpPage},
+        {path: "/market", component: MarketPage},
+        {path: "/market/:id", component: ItemDetailPage},
+        {path: "/main", component: MainPage},
+        {path: "/campaign/:id", component: CampaignDetailPage},
+        {path: "/transaction", component: InquiryTransactionPage},
+        {path: "/dummy", component: DummyPage},
+        {path: null, component: NotFoundPage}
+      ]
+    },
+    {
+      name : "authorityrouter",
+      paths: [
+        {path: "/myPage", component: MyPage, userTypes: ["normal"]},
+        {path: "/dashboard", component: DashBoardPage, userTypes: ["seller", "charity"]},
+        {path: "/donate/:id", component: DonatePage, userTypes: ["normal"]},
+        {path: "/purchase/:id", component: PurchasePage, userTypes: ["charity"]},
+        {path: "/registItem", component: RegistItemPage, userTypes: ["seller"]},
+        {path: "/registCampaign", component: RegistCamgaignPage, userTypes: ["charity"]}
+      ]
+    }
+  ];
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={HomePage} />
+        {routes.map((route) => {
+          if(route.name === "route") {
+            return route.paths.map((data, i) => {
+              // eslint-disable-next-line react/no-array-index-key
+              return <Route key={i} path={data.path} exact component={data.component} />
+            })
+          } if (route.name === "authorityrouter") {
+            return  route.paths.map((data, i) => {
+              // eslint-disable-next-line react/no-array-index-key
+              return <AuthorityRouter key={i} path={data.path} exact component={data.component} userTypes={data.userTypes} />
+            })
+          } return null
+        })}
+        {/* <Route path="/" exact component={HomePage} />
         <AuthorityRouter
           path="/myPage"
           exact
@@ -71,7 +112,7 @@ function Router() {
           userTypes={['charity']}
         />
         <Route path="/dummy" exact component={DummyPage} />
-        <Route component={NotFoundPage} />
+      <Route component={NotFoundPage} /> */}
       </Switch>
     </BrowserRouter>
   );

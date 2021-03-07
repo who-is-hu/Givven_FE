@@ -8,7 +8,7 @@ import store from './store';
 import App from './App';
 
 axios.defaults.baseURL =
-  'http://ec2-13-125-92-186.ap-northeast-2.compute.amazonaws.com:8080/api';
+  'http://ec2-3-36-105-34.ap-northeast-2.compute.amazonaws.com:8080/api';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const persistor = persistStore(store);
