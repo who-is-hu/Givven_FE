@@ -150,27 +150,176 @@ function MainPage() {
           console.log(err.response);
         });
     };
-    fetchData();
+    fetchData(); 
+      /* setIngCampaigns([
+        {
+          "id": 1,
+          "name": "campaign1",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 0,
+          "content": "campaign info..............",
+          "due_day": "2021-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        },
+        {
+          "id": 2,
+          "name": "campaign2",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 50000,
+          "content": "두번째",
+          "due_day": "2022-06-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 2
+        },
+        {
+          "id": 3,
+          "name": "campaign3",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 50000,
+          "content": "3번째",
+          "due_day": "2022-06-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 2
+        },
+        {
+          "id": 4,
+          "name": "campaign4",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 50000,
+          "content": "4번째",
+          "due_day": "2022-06-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 2
+        },
+        {
+          "id": 5,
+          "name": "campaign5",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 50000,
+          "content": "5번째",
+          "due_day": "2022-06-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 2
+        },
+        {
+          "id": 6,
+          "name": "campaign6",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 50000,
+          "content": "6번째",
+          "due_day": "2022-06-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 2
+        }
+      ]
+      )
+      setEndCampaigns([
+        {
+          "id": 1,
+          "name": "campaign1",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 100000,
+          "content": "1번 campaign info..............",
+          "due_day": "2020-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        },
+        {
+          "id": 2,
+          "name": "campaign2",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 1000000,
+          "content": "2번 campaign info..............",
+          "due_day": "2020-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        },
+        {
+          "id": 3,
+          "name": "campaign2",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 1000000,
+          "content": "3번 campaign info..............",
+          "due_day": "2020-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        },
+        {
+          "id": 4,
+          "name": "campaign2",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 1000000,
+          "content": "4번 campaign info..............",
+          "due_day": "2020-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        },
+        {
+          "id": 5,
+          "name": "campaign2",
+          "title_img": "default.png",
+          "dest_money": 100000,
+          "current_money": 1000000,
+          "content": "5번 campaign info..............",
+          "due_day": "2020-05-16",
+          "createdAt": "2020-05-16T06:14:26.000Z",
+          "updatedAt": "2020-05-16T06:14:26.000Z",
+          "deletedAt": null,
+          "userId": 1
+        }
+      ]) */
   }, []);
 
   return (
     <Layout>
       <Slider {...settings}>
-        {ingCampaigns === 0 ? (
+        {ingCampaigns.length === 0 ? (
           <Banner
-            title="캠페인1"
-            option="~00월 00일까지"
+            title="현재 진행중인 캠페인이 없습니다."
             backgroundImg={IMG1}
           />
-        ) : (
-          ingCampaigns.map(campaign => (
-            <Banner
-              title={campaign.title}
+        ) : ingCampaigns.map((campaign, i) => {
+          if(i < 3) {
+            return <Banner
+              key={campaign.id}
+              title={campaign.name}
               option={campaign.due_day}
-              backgroundImg={campaign.title_img}
+              backgroundImg={IMG1}
             />
-          ))
-        )}
+          } 
+            return null;
+        })}
       </Slider>
       <Container>
         <Title>CAMPAIGN</Title>
@@ -189,7 +338,7 @@ function MainPage() {
               <CampaignCard
                 key={campaign.id}
                 id={campaign.id}
-                titleImg={campaign.title_img}
+                titleImg={IMG1}
                 name={campaign.name}
                 destMoney={campaign.dest_money}
                 currentMoney={campaign.current_money}
@@ -211,7 +360,7 @@ function MainPage() {
               <CampaignCard
                 key={campaign.id}
                 id={campaign.id}
-                titleImg={campaign.title_img}
+                titleImg={IMG1}
                 name={campaign.name}
                 destMoney={campaign.dest_money}
                 currentMoney={campaign.current_money}
