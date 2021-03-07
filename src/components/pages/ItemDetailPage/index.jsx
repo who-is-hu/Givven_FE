@@ -17,6 +17,7 @@ const ShopHeader = styled.h2`
 const ItemSection = styled.section`
   font-family: Montserrat;
   margin-top: 153px;
+  margin-bottom: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
