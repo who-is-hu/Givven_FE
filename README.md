@@ -1,51 +1,59 @@
-# Givven_React_App
 
-블록체인 기부 플랫폼
+<div align="center">
+    <img src="./readme_images/LOGO.PNG" />
+    <h3>givven</h3>
+	<p>
+        블록체인을 이용한 신뢰성 있는 기부 서비스
+    </p>
+    <p>
+	    <a href="https://github.com/who-is-hu/givven">Givven API server</a>
+        &nbsp . &nbsp
+	    <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002617143">한국지식정보기술학회 등록 논문</a>
+    </p>
+    <br>
+    <br>
+    <img src="./readme_images/landing_page.png" />
+</div>
 
-## 협업 규칙
 
-#### Task
 
-asana task 와 PR을 1:1 대응시키기
+## Table of Contents
 
----
+1. [Description](#Description)
+2. [Technical Overview](#Technical-Overview)
+   1. [Architecture](#Architecture)
+   2. [Trasaction inquiry](#Trasaction-inquiry)
+3. [API specification](./GivvenAPI.md)
+4. [Thanks to](#Thanks-to)
 
-#### branch
 
-    feat/branchName
-    fix/branchName
 
----
+## Description
 
-#### Commit
+Givven은 기부를 하는 기부자, 캠페인을 등록하여 관리하고 기부금을 사용하는 사회단체, 물품을 파는 판매자를 하나의 서비스에 가입시켜 모든 거래 내역을 블록체인에 저장하고 생성된 모든 거래 내역을 누구든 확인할 수 있는 투명한 기부 서비스 입니다.
 
-- 작업 단위로 `commit` 하기 ( 너무 작은 작업들은 `squash` )
-- 생각없이 `git add .` 하지말고 커밋내용에 알맞는 작업만 추가하기
-  <br/>
 
-#### message
 
-    // 기능 추가 등의 커밋
-    feat: message
-    // 수정 사항
-    fix: message
-    // 삭제
-    remove: message
+## Technical Overview
 
----
+### Architecture
 
-#### Pull Request
+![System Architecture](./readme_images/sys_architecture.png)
 
-1. master를 `pull` 하여 업데이트
-2. `merge` 할 브랜치를 master 에 `rebase`
-   - confilct 를 미리 해결하고 로그를 깔끔하게 유지 하기 위함
-3. PR 이름은 **asana** task 이름과 같게
-4. 변경 사항 / 특이사항/ asana task link 를 Description에 작성
-5. Reviewer 설정
-6. asana description에 PR link 작성 / mention 하여 리뷰요청
+서버는 이용자와 통신하며 이용자에게 웹 서비스를 제공하고, 동시에 DApp의 클라이언트가 되어 서비스 내의 재화의 이동을 블록체인에 기록한다.
 
-- 전원 리뷰 완료시 `merge`
-- 이해가 안되는 코드는 변경사항을 보고 플젝에 어떤 영향을 미칠지 생각하여 리뷰 남기기
-- 도움 요청은 Draft PR 로 올리기
+그 이유는 완전 탈중앙화된 모델로 서비스를 구현하면 실제 사용자가 어느 정도 이더리움에 대한 지식이 있어야 하고 MetaMask와 같은 플러그인을 설치하여 사용해야 해서 접근성이 떨어지기 때문이다. 
 
----
+
+
+### Transaction inquriy
+
+![System Architecture](./readme_images/txqry.png)
+
+기부, 충전, 환전, 물품 구매 등 재화가 이동하는 트랜잭션이 일어날 때 해당 트랜잭션의 해쉬를 저장하고 사용자가 요구 시 트랜잭션에 대한 확인이 가능하다.
+
+
+
+# Thanks to
+
+숭실대학교 김익수 교수님
