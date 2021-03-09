@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import Layout from 'components/layout';
-import { ItemCard, Container } from 'components/atom';
+import { ItemCard, Container } from 'components/modules';
 
 const Title = styled.h1`
   display: block;

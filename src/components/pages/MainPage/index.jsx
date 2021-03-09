@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import Layout from 'components/layout';
-import { CampaignCard, Container, Banner } from 'components/atom';
+import { CampaignCard, Container, Banner } from 'components/modules';
 import IMG1 from 'assets/main.png';
 
 const Title = styled.h1`

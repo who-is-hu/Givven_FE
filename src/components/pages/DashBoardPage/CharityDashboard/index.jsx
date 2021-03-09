@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
-import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/atom';
+import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/modules';
 
 const Title = styled.h1`
   display: block;

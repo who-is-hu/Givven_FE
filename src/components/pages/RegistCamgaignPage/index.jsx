@@ -9,7 +9,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import Layout from 'components/layout';
-import { SpinnerScreen } from 'components/atom';
+import { SpinnerScreen } from 'components/modules';
 import defaultImg from 'assets/logo.PNG';
 
 const Container = styled.div`

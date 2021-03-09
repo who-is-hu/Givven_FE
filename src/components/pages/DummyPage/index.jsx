@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from 'components/layout';
 
-import { Modal } from 'components/atom';
+import { Modal } from 'components/modules';
 
 const DummyPage = () => {
   const [modal, setModal] = useState(true);

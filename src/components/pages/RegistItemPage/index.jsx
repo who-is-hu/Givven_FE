@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 
 import Layout from 'components/layout';
-import { SpinnerScreen } from 'components/atom';
+import { SpinnerScreen } from 'components/modules';
 import defaultImg from 'assets/logo.PNG';
 
 const Container = styled.div`

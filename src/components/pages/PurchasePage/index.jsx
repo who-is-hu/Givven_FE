@@ -9,7 +9,7 @@ import axios from 'axios';
 import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
-import { Container, Modal, SpinnerScreen, CampaignCard } from 'components/atom';
+import { Container, Modal, SpinnerScreen, CampaignCard } from 'components/modules';
 import DaumPostcode from 'react-daum-postcode';
 
 const Title = styled.h1`

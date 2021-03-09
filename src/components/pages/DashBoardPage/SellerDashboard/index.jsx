@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
-import { ItemCard, Container, Modal, SpinnerScreen } from 'components/atom';
+import { ItemCard, Container, Modal, SpinnerScreen } from 'components/modules';
 import ChangePointContent from './ChangePointModalContent';
 
 const Title = styled.h1`

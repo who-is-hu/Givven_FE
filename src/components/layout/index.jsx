@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 
-import { HeaderNav } from 'components/atom';
+import { HeaderNav } from 'components/modules';
 
 const Wrapper = styled.div`
   display: flex;

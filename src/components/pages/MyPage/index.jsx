@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import commaNumber from 'comma-number';
 
 import Layout from 'components/layout';
-import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/atom';
+import { CampaignCard, Container, Modal, SpinnerScreen } from 'components/modules';
 import BuyPointModalContent from './BuyPointModalContent';
 
 const Title = styled.h1`
