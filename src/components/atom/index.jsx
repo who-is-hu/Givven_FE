@@ -6,6 +6,7 @@ import SpinnerScreen from './SpinnerScreen';
 import CampaignCard from './CampaignCard';
 import Modal from './Modal';
 import Container from './Container';
+import Banner from './Banner';
 
 export {
   HeaderNav,
@@ -16,4 +17,5 @@ export {
   CampaignCard,
   Modal,
   Container,
+  Banner,
 };
