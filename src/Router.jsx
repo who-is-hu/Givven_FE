@@ -19,6 +19,7 @@ import {
   RegistItemPage,
   RegistCamgaignPage,
   NotFoundPage,
+  UnauthorizedPage,
   DummyPage,
 } from 'components/pages';
 
@@ -35,14 +36,13 @@ function Router() {
         {path: "/main", component: MainPage},
         {path: "/campaign/:id", component: CampaignDetailPage},
         {path: "/transaction", component: InquiryTransactionPage},
-        {path: "/dummy", component: DummyPage},
-        {path: null, component: NotFoundPage}
+        {path: "/dummy", component: DummyPage}
       ]
     },
     {
       name : "authorityrouter",
       paths: [
-        {path: "/myPage", component: MyPage, userTypes: ["normal"]},
+        {path: "/myPage", component: MyPage, userTypes: ['normal']},
         {path: "/dashboard", component: DashBoardPage, userTypes: ["seller", "charity"]},
         {path: "/donate/:id", component: DonatePage, userTypes: ["normal"]},
         {path: "/purchase/:id", component: PurchasePage, userTypes: ["charity"]},
@@ -63,7 +63,14 @@ function Router() {
           } if (route.name === "authorityrouter") {
             return  route.paths.map((data, i) => {
               // eslint-disable-next-line react/no-array-index-key
-              return <AuthorityRouter key={i} path={data.path} exact component={data.component} userTypes={data.userTypes} />
+              return <AuthorityRouter
+              // eslint-disable-next-line react/no-array-index-key
+                key={i}
+                path={data.path}
+                exact
+                component={data.component}
+                userTypes={data.userTypes}
+              />
             })
           } return null
         })}
@@ -111,8 +118,8 @@ function Router() {
           component={RegistCamgaignPage}
           userTypes={['charity']}
         />
-        <Route path="/dummy" exact component={DummyPage} />
-      <Route component={NotFoundPage} /> */}
+      <Route path="/dummy" exact component={DummyPage} /> */}
+        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );
@@ -123,7 +130,7 @@ const AuthorityRouter = ({ userTypes, children, component, ...rest }) => {
   return (
     <Route
       {...rest}
-      component={userTypes.includes(user.type) ? component : NotFoundPage}
+      component={userTypes.includes(user.type) ? component : UnauthorizedPage}
     />
   );
 };

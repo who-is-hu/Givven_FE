@@ -37,6 +37,7 @@ const Form = styled.form`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  min-width: 1400px;
   flex-wrap: wrap;
   align-items: flex-end;
 `;
@@ -73,7 +74,7 @@ const Img = styled.img`
 const Btn = styled.input`
   position: relative;
   opacity: 0;
-  width: 190px;
+  width: 250px;
   height: 30px;
   font-weight: 500;
   font-size: 24px;
@@ -85,7 +86,7 @@ const Btn = styled.input`
 `;
 
 const FakeObject = styled.div`
-  width: 190px;
+  width: 250px;
   height: 30px;
   margin-top: -30px;
   font-weight: 500;

@@ -9,6 +9,7 @@ const Container = styled.div`
   margin-top: 150px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -49,7 +50,7 @@ const Img = styled.div`
   
 `;
 
-function NotFoundPage () {
+function UnauthorizedPage () {
   return (
     <Layout>
       <Container>
@@ -58,12 +59,12 @@ function NotFoundPage () {
             <Img />
           </ImgContainer>
           <SubText>Error!</SubText>
-          <Text>404</Text>
-          <SubText>Page Not Found!</SubText>
+          <Text>401</Text>
+          <SubText>Authorization required!</SubText>
         </SubContainer>
       </Container>
     </Layout>
   )
 }
 
-export default NotFoundPage;
+export default UnauthorizedPage;

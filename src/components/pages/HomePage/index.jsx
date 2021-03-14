@@ -32,18 +32,18 @@ const MainText = styled(RequestText)`
 `;
 
 const Container = styled.div`
-  width: 1920px;
+  width: 100%;
+  min-width: 1920px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 `;
 const MainImg = styled.div`
-  width: 1600px;
+  width: 100%;
   height: 600px;
   background-image: url('${MAIN}');
-  background-size: 1600px 600px;
+  background-size: 100% 600px;
   padding-top: 350px;
   padding-left: 100px;
 `;

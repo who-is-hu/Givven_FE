@@ -13,6 +13,7 @@ import PurchasePage from './PurchasePage';
 import RegistItemPage from './RegistItemPage';
 import RegistCamgaignPage from './RegistCamgaignPage';
 import NotFoundPage from './NotFoundPage';
+import UnauthorizedPage from './UnauthorizedPage';
 import DummyPage from './DummyPage';
 
 export {
@@ -31,5 +32,6 @@ export {
   RegistItemPage,
   RegistCamgaignPage,
   NotFoundPage,
+  UnauthorizedPage,
   DummyPage,
 };

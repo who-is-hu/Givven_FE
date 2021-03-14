@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const Wrapper = styled.nav`
   width: 100%;
   height: 120px;
+  min-width: 1920px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -35,6 +36,7 @@ const LogoBox = styled.div`
   background-image: url(${Logo});
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 const Word = styled.span`
   font-size: 1.3125rem;
@@ -127,7 +129,7 @@ const HeaderNav = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper className="headerWrapper">
       <LogoWrapper>
         <LogoBox onClick={() => history.push('/')}>
           {/* <img src={Logo} alt="logo.png" /> */}
